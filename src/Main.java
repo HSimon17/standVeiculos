@@ -489,12 +489,12 @@ public class Main {
                                         do {
                                             System.out.println("\n\n*****     Listar Veículos      *****");
                                             System.out.println("\n*************************************");
-                                            System.out.println("**** 1 - Listar por marca         ****");
-                                            System.out.println("**** 2 - Listar por modelo        ****");
-                                            System.out.println("**** 3 - Listar por ano           ****");
-                                            System.out.println("**** 4 - Listar por preço         ****");
-                                            System.out.println("**** 5 - Listar todos os Veículos       ****");
-                                            System.out.println("**** 0 - Sair                     ****");
+                                            System.out.println("**** 1 - Listar por marca          ****");
+                                            System.out.println("**** 2 - Listar por modelo         ****");
+                                            System.out.println("**** 3 - Listar por ano            ****");
+                                            System.out.println("**** 4 - Listar por preço          ****");
+                                            System.out.println("**** 5 - Listar todos os Veículos  ****");
+                                            System.out.println("**** 0 - Sair                      ****");
                                             System.out.println("\n*************************************");
                                             System.out.print("\nInsira a opção que deseja: ");
                                             menu6 = ler.nextInt();
