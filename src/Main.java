@@ -332,6 +332,13 @@ public class Main {
                                     case 8:
                                         break;
                                     case 9:
+                                        System.out.println("Escolha o Cliente pelo sua nif: ");
+                                        nif = Integer.parseInt(ler.next());
+                                        for (Utilizador use: utilizadores){
+                                            if(use.getNif() == nif){
+                                                System.out.println(use.toString());
+                                            }
+                                        }
                                         break;
                                     case 10:
                                         System.out.println(utilizador.toString());
@@ -550,6 +557,13 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 4:
+                                        System.out.println("Escolha o Veículo pela sua Matrícula: ");
+                                        matricula = ler.next();
+                                        for (Automovel auto: automoveis){
+                                            if(auto.getMatricula().equals(matricula)){
+                                                System.out.println(auto.toString());
+                                            }
+                                        }
                                         break;
                                     case 5:
                                         break;
