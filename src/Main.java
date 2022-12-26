@@ -302,9 +302,13 @@ public class Main {
                                                 case 0:
                                                     break;
                                                 case 1:
+                                                    break;
                                                 case 2:
+                                                    break;
                                                 case 3:
+                                                    break;
                                                 case 4:
+                                                    break;
                                             }
                                         } while (menu4 != 0);
                                         break;
@@ -328,8 +332,11 @@ public class Main {
                                                 case 0:
                                                     break;
                                                 case 1:
+                                                    break;
                                                 case 2:
+                                                    break;
                                                 case 3:
+                                                    break;
                                             }
                                         } while (menu5 != 0);
                                         break;
