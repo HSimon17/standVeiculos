@@ -89,16 +89,22 @@ public class Automovel {
 
     @Override
     public String toString(){
-
-        String str = "\n\tMatricula: " +matricula;
-        str += "\n\tMarca: " +marca;
-        str += "\n\tModelo: " +modelo;
-        str += "\n\tCor: " +cor;
-        str += "\n\tAno: " +ano;
-        str += "\n\tKms: " +kms;
-        str += "\n\tPreço: " +preco;
-        str += "\n\tEstado: " +estado;
+        System.out.println("\n\n**********     Informações do Automóvel      **********");
+        String str = "\n\t\t\tMatricula: " +matricula;
+        str += "\n\t\t\tMarca: " +marca;
+        str += "\n\t\t\tModelo: " +modelo;
+        str += "\n\t\t\tCor: " +cor;
+        str += "\n\t\t\tAno: " +ano;
+        str += "\n\t\t\tKms: " +kms;
+        str += "\n\t\t\tPreço: " +preco;
+        str += "\n\t\t\tEstado: " +estado;
         return str;
 
+    }
+
+    public String matriculas(){
+        String str = "\n\tMatricula: " +matricula;
+
+        return str;
     }
 }
