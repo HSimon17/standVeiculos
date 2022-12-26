@@ -59,7 +59,6 @@ public class Main {
         int menu1;
         do {
             System.out.println("\n\n***** Stand Automóvel  *****");
-            System.out.println("\n\n***** Stand Automóvel  *****");
             System.out.println("\n*******************************");
             System.out.println("**** 1 - Registar Utilizador ****");
             System.out.println("**** 2 - Login               ****");
