@@ -367,23 +367,57 @@ public class Main {
                                             System.out.println("**** 2 - Listar por modelo        ****");
                                             System.out.println("**** 3 - Listar por ano           ****");
                                             System.out.println("**** 4 - Listar por preço         ****");
+                                            System.out.println("**** 5 - Listar todos os Veículos       ****");
                                             System.out.println("**** 0 - Sair                     ****");
                                             System.out.println("\n*************************************");
                                             System.out.print("\nInsira a opção que deseja: ");
                                             menu6 = ler.nextInt();
-                                            switch (menu6) {
-                                                case 0:
-                                                    break;
+                                            switch (menu6){
+                                                case 0: break;
                                                 case 1:
+                                                    System.out.println("Escolha a Marca: ");
+                                                    marca = ler.next();
+                                                    for(Automovel auto : automoveis){
+                                                        if(auto.getMarca().equals(marca)){
+                                                            System.out.println(auto.toString());
+                                                        }
+                                                    }
                                                     break;
                                                 case 2:
+                                                    System.out.println("Escolha o Modelo: ");
+                                                    // System.out.println("Escolha o Modelo: ");
+                                                    modelo = ler.next();
+                                                    for(Automovel auto : automoveis) {
+                                                        if (auto.getModelo().equals(modelo)) {
+                                                            System.out.println(auto.toString());
+                                                        }
+                                                    }
                                                     break;
                                                 case 3:
+                                                    System.out.println("Escolha o Ano: ");
+                                                    ano = Integer.parseInt(ler.next());
+                                                    for(Automovel auto : automoveis){
+                                                        if(auto.getAno() == ano){
+                                                            System.out.println(auto.toString());
+                                                        }
+                                                    }
                                                     break;
                                                 case 4:
+                                                    System.out.println("Escolha o Preço Máximo: ");
+                                                    preco = ler.nextFloat();
+                                                    for(Automovel auto : automoveis){
+                                                        if(auto.getPreco() <= preco){
+                                                            System.out.println(auto.toString());
+                                                        }
+                                                    }
+                                                    break;
+                                                case 5:
+                                                    for (Automovel auto : automoveis) {
+                                                        System.out.println(auto.toString());
+                                                    }
                                                     break;
                                             }
-                                        } while (menu6 != 0);
+                                        } while(menu6 != 0);
                                         break;
                                     case 4:
                                         break;
