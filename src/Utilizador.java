@@ -94,7 +94,7 @@ public class Utilizador {
     }
 
     public String ola(){
-        String str = "Olá "+nome;
+        String str = "Olá "+nome +apelido;
 
         return str;
     }

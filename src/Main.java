@@ -35,15 +35,13 @@ public class Main {
         String email = ler.nextLine();
         System.out.println("Password: ");
         String password = ler.nextLine();
-        Iterator var5 = utilizadores.iterator();
 
-        while (var5.hasNext()) {
-            Utilizador user = (Utilizador) var5.next();
+
+        for (Utilizador user : utilizadores){
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 utilizador = user;
             }
         }
-
         return utilizador;
     }
 
@@ -51,12 +49,14 @@ public class Main {
         ArrayList<Utilizador> utilizadores = new ArrayList();
         ArrayList<Automovel> automoveis = new ArrayList<>();
 
-        Utilizador utilizadorNovo = null;
+        Utilizador utilizador, utilizadorNovo = null;
         Automovel automovel = null, automovelNovo = null;
         int nif, ano, indiceUtilizador, indiceAutomovel;
         String nome, apelido, email, password, cidade, tipoUser, matricula, marca, modelo, cor;
         Float kms, preco;
         boolean existe = false;
+
+
         Scanner ler = new Scanner(System.in);
 
         int menu1;
@@ -69,9 +69,6 @@ public class Main {
             System.out.println("\n*******************************");
             System.out.print("\nInsira a Opcao que deseja: ");
             menu1 = ler.nextInt();
-            Utilizador utilizador;
-            Iterator var18;
-            Utilizador user;
             switch (menu1) {
                 case 0:
                     break;
@@ -80,16 +77,11 @@ public class Main {
                     if (utilizador != null) {
                         existe = false;
                     }
-
-                    var18 = utilizadores.iterator();
-
-                    while (var18.hasNext()) {
-                        user = (Utilizador) var18.next();
+                    for (Utilizador user : utilizadores){
                         if (utilizador.getNif() == user.getNif()) {
                             existe = true;
                         }
                     }
-
                     if (existe) {
                         System.out.println("NIF já existente!\n");
                     } else {
@@ -103,10 +95,7 @@ public class Main {
                     if (utilizador == null) {
                         System.out.println("Login Inválido!");
                     } else {
-                        var18 = utilizadores.iterator();
-
-                        while (var18.hasNext()) {
-                            user = (Utilizador) var18.next();
+                        for (Utilizador user : utilizadores){
                             if (user.getNif() == utilizador.getNif()) {
                                 indiceUtilizador = utilizadores.indexOf(user);
                             }
