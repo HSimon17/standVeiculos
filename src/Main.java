@@ -294,9 +294,13 @@ public class Main {
                                             switch (menu4){
                                                 case 0: break;
                                                 case 1:
+                                                    break;
                                                 case 2:
+                                                    break;
                                                 case 3:
+                                                    break;
                                                 case 4:
+                                                    break;
                                             }
                                         } while(menu4 != 0);
                                     case 4:
@@ -316,8 +320,11 @@ public class Main {
                                             switch (menu5){
                                                 case 0: break;
                                                 case 1:
+                                                    break;
                                                 case 2:
+                                                    break;
                                                 case 3:
+                                                    break;
                                             }
                                         } while(menu5 != 0);
                                 }
