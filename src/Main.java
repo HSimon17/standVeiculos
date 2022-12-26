@@ -443,6 +443,7 @@ public class Main {
                                                     break;
                                                 case 2:
                                                     System.out.println("Escolha o Modelo: ");
+                                                   // System.out.println("Escolha o Modelo: ");
                                                     String modelo = ler.next();
                                                     for(Automovel auto : automoveis) {
                                                         if (auto.getModelo().equals(modelo)) {
