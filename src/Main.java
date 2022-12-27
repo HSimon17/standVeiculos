@@ -589,6 +589,229 @@ public class Main {
                                         break;
                                 }
                             } while (menu4 != 0);
+                        } else if(utilizador.getTipoUser().equals("userManager")){
+                            int menu8;
+                            do {
+                                System.out.println(utilizador.ola());
+                                System.out.println("\n\n**********       Menu UserManager          **********");
+                                System.out.println("\n***********************************************");
+                                System.out.println("***** 1 - Visualizar Perfil              *****");
+                                System.out.println("***** 2 - Editar Perfil               *****");
+                                System.out.println("***** 3 - Criar Utilizador             *****");
+                                System.out.println("***** 4 - Editar Utilizador               *****");
+                                System.out.println("***** 5 - Listar Veiculos                  *****");
+                                System.out.println("***** 6 - Listar Utilizadores                *****");
+                                System.out.println("***** 0 - Logout                          *****");
+                                System.out.println("\n***********************************************");
+                                System.out.print("Insira a Opção que deseja: ");
+                                menu8 = ler.nextInt();
+                                switch (menu8){
+                                    case 1:
+                                    System.out.println(utilizador.toString());
+                                    break;
+                                    case 2:
+                                    System.out.println(utilizador.toString());
+
+                                    int menu5;
+                                    do {
+                                        System.out.println("\n\n*****       Editar Perfil          *****");
+                                        System.out.println("\n*****************************************");
+                                        System.out.println("**** 1 - Nome                          *****");
+                                        System.out.println("**** 2 - Apelido                       *****");
+                                        System.out.println("**** 3 - Username                      *****");
+                                        System.out.println("**** 4 - Password                      *****");
+                                        System.out.println("**** 5 - Cidade                        *****");
+                                        System.out.println("**** 6 - Telemóvel                     *****");
+                                        System.out.println("**** 0 - Sair                          *****");
+                                        System.out.println("\n*****************************************");
+                                        System.out.print("Insira a Informação que deseja Editar: ");
+                                        menu5 = ler.nextInt();
+                                        switch (menu5) {
+                                            case 0:
+                                                break;
+                                            case 1:
+                                                utilizadorNovo = utilizador;
+                                                System.out.println("Altere o Nome: ");
+                                                nome = ler.next();
+                                                utilizador.setNome(nome);
+                                                break;
+                                            case 2:
+                                                utilizadorNovo = utilizador;
+                                                System.out.println("Altere o Apelido: ");
+                                                apelido = ler.next();
+                                                utilizador.setApelido(apelido);
+                                                break;
+                                            case 3:
+                                                utilizadorNovo = utilizador;
+                                                System.out.println("Altere o Email: ");
+                                                email = ler.next();
+                                                utilizador.setEmail(email);
+                                                break;
+                                            case 4:
+                                                utilizadorNovo = utilizador;
+                                                System.out.println("Altere a Password: ");
+                                                password = ler.next();
+                                                utilizador.setPassword(password);
+                                                break;
+                                            case 5:
+                                                utilizadorNovo = utilizador;
+                                                System.out.println("Altere a Cidade: ");
+                                                cidade = ler.next();
+                                                utilizador.setCidade(cidade);
+                                                break;
+                                            case 6:
+                                                utilizadorNovo = utilizador;
+                                                System.out.println("Altere o Telemóvel: ");
+                                                int telemovel = Integer.parseInt(ler.next());
+                                                utilizador.setTelemovel(telemovel);
+                                                break;
+                                            default:
+                                                System.out.println("Opcao Inválida!\n\n");
+                                        }
+                                        utilizadores.set(indiceUtilizador, utilizadorNovo);
+                                        utilizador = utilizadorNovo;
+                                    } while (menu5 != 0);
+                                    break;
+                                    case 3:
+                                        utilizador = adicionarUtilizador();
+                                        if (utilizador != null) {
+                                            existe = false;
+                                        }
+                                        for (Utilizador user : utilizadores){
+                                            if (utilizador.getNif() == user.getNif()) {
+                                                existe = true;
+                                            }
+                                        }
+                                        if (existe) {
+                                            System.out.println("NIF já existente!\n");
+                                        } else {
+                                            System.out.println("Utilizador Registado com Sucesso!\n");
+                                            utilizadores.add(utilizador);
+                                        }
+                                        break;
+                                    case 4: break;
+                                    case 5:
+                                        int menu6;
+                                        do {
+                                            System.out.println("\n\n*****     Listar Veículos      *****");
+                                            System.out.println("\n*************************************");
+                                            System.out.println("**** 1 - Listar por marca          ****");
+                                            System.out.println("**** 2 - Listar por modelo         ****");
+                                            System.out.println("**** 3 - Listar por ano            ****");
+                                            System.out.println("**** 4 - Listar por preço          ****");
+                                            System.out.println("**** 5 - Listar todos os Veículos  ****");
+                                            System.out.println("**** 0 - Sair                      ****");
+                                            System.out.println("\n*************************************");
+                                            System.out.print("\nInsira a opção que deseja: ");
+                                            menu6 = ler.nextInt();
+                                            switch (menu6){
+                                                case 0: break;
+                                                case 1:
+                                                    System.out.println("Escolha a Marca: ");
+                                                    marca = ler.next();
+                                                    for(Automovel auto : automoveis){
+                                                        if(auto.getMarca().equals(marca)){
+                                                            System.out.println(auto.toString());
+                                                        }
+                                                    }
+                                                    break;
+                                                case 2:
+                                                    System.out.println("Escolha o Modelo: ");
+                                                    modelo = ler.next();
+                                                    for(Automovel auto : automoveis) {
+                                                        if (auto.getModelo().equals(modelo)) {
+                                                            System.out.println(auto.toString());
+                                                        }
+                                                    }
+                                                    break;
+                                                case 3:
+                                                    System.out.println("Escolha o Ano: ");
+                                                    ano = Integer.parseInt(ler.next());
+                                                    for(Automovel auto : automoveis){
+                                                        if(auto.getAno() == ano){
+                                                            System.out.println(auto.toString());
+                                                        }
+                                                    }
+                                                    break;
+                                                case 4:
+                                                    System.out.println("Escolha o Preço Máximo: ");
+                                                    preco = ler.nextFloat();
+                                                    for(Automovel auto : automoveis){
+                                                        if(auto.getPreco() <= preco){
+                                                            System.out.println(auto.toString());
+                                                        }
+                                                    }
+                                                    break;
+                                                case 5:
+                                                    for (Automovel auto : automoveis) {
+                                                        System.out.println(auto.toString());
+                                                    }
+                                                    break;
+                                            }
+                                        } while(menu6 != 0);
+                                        break;
+                                    case 6:
+                                    int menu9;
+                                    do {
+                                        System.out.println("\n\n*****     Listar Utilizadores      *****");
+                                        System.out.println("\n*************************************");
+                                        System.out.println("**** 1 - Listar por Cidade          ****");
+                                        System.out.println("**** 2 - Listar por NIF         ****");
+                                        System.out.println("**** 3 - Listar por Tipo            ****");
+                                        System.out.println("**** 4 - Listar Todos os Utilizadores          ****");
+                                        System.out.println("**** 0 - Sair                      ****");
+                                        System.out.println("\n*************************************");
+                                        System.out.print("\nInsira a opção que deseja: ");
+                                        menu9 = ler.nextInt();
+                                        switch (menu9){
+                                            case 1:
+                                                System.out.println("Insira uma Cidade: ");
+                                                cidade = ler.next();
+                                                for (Utilizador user: utilizadores){
+                                                    if(user.getCidade().equals(cidade)){
+                                                        System.out.println(user.toString());
+                                                    }
+                                                }
+                                                break;
+                                            case 2:
+                                                for (Utilizador user : utilizadores) {
+                                                    System.out.println(user.nifs());
+                                                }
+                                                System.out.println("Escolha o Cliente pelo seu NIF: ");
+                                                nif = Integer.parseInt(ler.next());
+                                                for (Utilizador use: utilizadores){
+                                                    if(use.getNif() == nif){
+                                                        System.out.println(use.toString());
+                                                    }
+                                                }
+                                                break;
+                                            case 3:
+                                                System.out.println("\nTipos de Utilizador: ");
+                                                System.out.println("admin");
+                                                System.out.println("userManager");
+                                                System.out.println("cliente");
+                                                System.out.println("\nInsira um Tipo de Utilizador: ");
+                                                tipoUser = ler.next();
+                                                for (Utilizador user: utilizadores){
+                                                    if(user.getTipoUser().equals(tipoUser)){
+                                                        System.out.println(user.toString());
+                                                    }
+                                                }
+                                                break;
+                                            case 4:
+                                                for (Utilizador user : utilizadores) {
+                                                    System.out.println(user.toString());
+                                                }
+                                                break;
+                                            case 0:
+                                                break;
+                                        }
+                                    }while(menu9 != 0);
+                                    break;
+                                    case 0: break;
+                                }
+                            }while (menu8 != 0);
+
                         }
                     }
                     break;
