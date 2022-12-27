@@ -562,6 +562,20 @@ public class Main {
                                         }
                                         break;
                                     case 5:
+                                        System.out.println("\n\n*****       Reservar Automóvel       *****");
+
+                                        System.out.println("Insira a matrícula: ");
+                                        matricula = ler.next();
+
+                                        for (Automovel auto: automoveis){
+                                            if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
+                                                System.out.println("Insira a data");
+                                                //data_reserva = ler.next();
+                                                //utilizador.reservarVeiculo(matricula, data_reserva);
+                                                auto.setEstado(Automovel.Estado.RESERVADO);
+                                            }
+                                        }
+
                                         break;
                                     case 6:
                                         int menu7;
