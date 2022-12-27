@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -168,16 +167,16 @@ public class Main {
                                         break;
 
                                     case 2:
-                                        indiceAutomovel = -1;
-                                        System.out.println(automovel.matriculas());
-
-                                        System.out.println("Insira a matricula");
+                                        for (Automovel auto : automoveis) {
+                                            System.out.println(auto.matriculas());
+                                        }
+                                        System.out.println("Insira a matrícula: ");
                                         matricula = ler.next();
 
                                         for (Automovel auto: automoveis){
                                             if (auto.getMatricula().equals(matricula)){
                                                 System.out.println(auto.toString());
-                                                indiceAutomovel = automoveis.indexOf(auto);
+
                                                 int menu3;
                                                 do {
                                                     System.out.println("\n\n*****        Editar Automóvel         *****");
@@ -196,37 +195,37 @@ public class Main {
                                                         case 0:
                                                             break;
                                                         case 1:
-                                                            automovelNovo = automovel;
+                                                            automovelNovo = auto;
                                                             System.out.println("Altere a Marca: ");
                                                             marca = ler.next();
                                                             automovel.setMarca(marca);
                                                             break;
                                                         case 2:
-                                                            automovelNovo = automovel;
+                                                            automovelNovo = auto;
                                                             System.out.println("Altere o Modelo: ");
                                                             modelo = ler.next();
                                                             automovel.setModelo(modelo);
                                                             break;
                                                         case 3:
-                                                            automovelNovo = automovel;
+                                                            automovelNovo = auto;
                                                             System.out.println("Altere a Cor: ");
                                                             cor = ler.next();
                                                             automovel.setCor(cor);
                                                             break;
                                                         case 4:
-                                                            automovelNovo = automovel;
+                                                            automovelNovo = auto;
                                                             System.out.println("Altere o Ano: ");
                                                             ano = ler.nextInt();
                                                             automovel.setAno(ano);
                                                             break;
                                                         case 5:
-                                                            automovelNovo = automovel;
+                                                            automovelNovo = auto;
                                                             System.out.println("Altere os Kms: ");
                                                             kms = ler.nextFloat();
                                                             automovel.setKms(kms);
                                                             break;
                                                         case 6:
-                                                            automovelNovo = automovel;
+                                                            automovelNovo = auto;
                                                             System.out.println("Altere o Preço: ");
                                                             preco = ler.nextFloat();
                                                             automovel.setPreco(preco);
@@ -234,8 +233,9 @@ public class Main {
                                                         default:
                                                             System.out.println("Opcao Inválida!\n\n");
                                                     }
+                                                    indiceAutomovel = automoveis.indexOf(auto);
                                                     automoveis.set(indiceAutomovel, automovelNovo);
-                                                    automovel = automovelNovo;
+                                                    automovel = auto;
                                                 } while (menu3 != 0);
                                             }
                                         }
@@ -247,13 +247,13 @@ public class Main {
                                         do {
                                             System.out.println("\n\n*****     Listar Veículos      *****");
                                             System.out.println("\n*************************************");
-                                            System.out.println("**** 1 - Listar por marca         ****");
-                                            System.out.println("**** 2 - Listar por modelo        ****");
-                                            System.out.println("**** 3 - Listar por ano           ****");
-                                            System.out.println("**** 4 - Listar por preço         ****");
+                                            System.out.println("**** 1 - Listar por marca          ****");
+                                            System.out.println("**** 2 - Listar por modelo         ****");
+                                            System.out.println("**** 3 - Listar por ano            ****");
+                                            System.out.println("**** 4 - Listar por preço          ****");
                                             System.out.println("**** 5 - Listar por Estado         ****");
-                                            System.out.println("**** 6 - Listar todos os Veículos       ****");
-                                            System.out.println("**** 0 - Sair                     ****");
+                                            System.out.println("**** 6 - Listar todos os Veículos  ****");
+                                            System.out.println("**** 0 - Sair                      ****");
                                             System.out.println("\n*************************************");
                                             System.out.print("\nInsira a opção que deseja: ");
                                             menu6 = ler.nextInt();
@@ -321,7 +321,7 @@ public class Main {
                                     case 8:
                                         break;
                                     case 9:
-                                        System.out.println("Escolha o Cliente pelo sua nif: ");
+                                        System.out.println("Escolha o Cliente pelo seu nif: ");
                                         nif = Integer.parseInt(ler.next());
                                         for (Utilizador use: utilizadores){
                                             if(use.getNif() == nif){
@@ -391,7 +391,6 @@ public class Main {
                                                 default:
                                                     System.out.println("Opcao Inválida!\n\n");
                                             }
-
                                             utilizadores.set(indiceUtilizador, utilizadorNovo);
                                             utilizador = utilizadorNovo;
                                         } while (menu5 != 0);

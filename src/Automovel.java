@@ -32,6 +32,17 @@ public class Automovel {
         this.estado = Estado.DISPONIVEL;
     }
 
+    public Automovel(){
+        this.matricula="";
+        this.marca="";
+        this.modelo="";
+        this.cor="";
+        this.ano=0;
+        this.kms=0;
+        this.preco=0;
+        this.estado=Estado.DISPONIVEL;
+    }
+
     public String getMatricula() {
         return this.matricula;
     }
