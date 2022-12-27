@@ -321,6 +321,11 @@ public class Main {
                                     case 8:
                                         break;
                                     case 9:
+                                        for (Utilizador user : utilizadores) {
+                                            if(user.getTipoUser().equals("cliente")) {
+                                                System.out.println(user.nifs());
+                                            }
+                                        }
                                         System.out.println("Escolha o Cliente pelo seu nif: ");
                                         nif = Integer.parseInt(ler.next());
                                         for (Utilizador use: utilizadores){
@@ -545,6 +550,9 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 4:
+                                        for (Automovel auto : automoveis) {
+                                            System.out.println(auto.matriculas());
+                                        }
                                         System.out.println("Escolha o Veículo pela sua Matrícula: ");
                                         matricula = ler.next();
                                         for (Automovel auto: automoveis){

@@ -98,4 +98,12 @@ public class Utilizador {
 
         return str;
     }
+
+    public String nifs(){
+        String str = "\n\tNIF: " +nif;
+
+        return str;
+    }
 }
+
+
