@@ -60,7 +60,7 @@ public class Main {
 
         int menu1;
         do {
-            System.out.println("\n\n****** Stand Automóvel  ******");
+            System.out.println("\n\n******   Stand Automóvel   ******");
             System.out.println("\n*********************************");
             System.out.println("**** 1 - Registar Utilizador ****");
             System.out.println("**** 2 - Login               ****");
@@ -115,8 +115,8 @@ public class Main {
                                 System.out.println("***** 7 - Cancelar Reserva                *****");
                                 System.out.println("***** 8 - Listar Próximos Clientes        *****");
                                 System.out.println("***** 9 - Informações de um Cliente       *****");
-                                System.out.println("**** 10 - Visualizar Perfil             ****");
-                                System.out.println("**** 11 - Editar Perfil                 ****");
+                                System.out.println("***** 10 - Visualizar Perfil              *****");
+                                System.out.println("***** 11 - Editar Perfil                  *****");
                                 System.out.println("***** 0 - Logout                          *****");
                                 System.out.println("\n***********************************************");
                                 System.out.print("Insira a Opção que deseja: ");
@@ -245,8 +245,8 @@ public class Main {
                                     case 4:
                                         int menu6;
                                         do {
-                                            System.out.println("\n\n*****     Listar Veículos      *****");
-                                            System.out.println("\n*************************************");
+                                            System.out.println("\n\n******     Listar Veículos       ******");
+                                            System.out.println("\n***************************************");
                                             System.out.println("**** 1 - Listar por marca          ****");
                                             System.out.println("**** 2 - Listar por modelo         ****");
                                             System.out.println("**** 3 - Listar por ano            ****");
@@ -408,15 +408,15 @@ public class Main {
                             int menu4;
                             do {
                                 System.out.println(utilizador.ola());
-                                System.out.println("\n\n*****       Menu cliente          *****");
+                                System.out.println("\n\n*****        Menu cliente           *****");
                                 System.out.println("\n*****************************************");
-                                System.out.println("**** 1 - Visualizar Perfil             ****");
-                                System.out.println("**** 2 - Editar Perfil                 ****");
-                                System.out.println("**** 3 - Listar Veiculos               ****");
-                                System.out.println("**** 4 - Informacao de um veiculo      ****");
-                                System.out.println("**** 5 - Reservar veiculo              ****");
-                                System.out.println("**** 6 - Consultar Histórico           ****");
-                                System.out.println("**** 0 - Logout                        ****");
+                                System.out.println("**** 1 - Visualizar Perfil           ****");
+                                System.out.println("**** 2 - Editar Perfil               ****");
+                                System.out.println("**** 3 - Listar Veiculos             ****");
+                                System.out.println("**** 4 - Informacao de um veiculo    ****");
+                                System.out.println("**** 5 - Reservar veiculo            ****");
+                                System.out.println("**** 6 - Consultar Histórico         ****");
+                                System.out.println("**** 0 - Logout                      ****");
                                 System.out.println("\n*****************************************");
                                 System.out.print("Insira a Opção que deseja: ");
                                 menu4 = ler.nextInt();
@@ -593,14 +593,14 @@ public class Main {
                             int menu8;
                             do {
                                 System.out.println(utilizador.ola());
-                                System.out.println("\n\n**********       Menu UserManager          **********");
+                                System.out.println("\n\n**********    Menu UserManager       **********");
                                 System.out.println("\n***********************************************");
-                                System.out.println("***** 1 - Visualizar Perfil              *****");
-                                System.out.println("***** 2 - Editar Perfil               *****");
-                                System.out.println("***** 3 - Criar Utilizador             *****");
+                                System.out.println("***** 1 - Visualizar Perfil               *****");
+                                System.out.println("***** 2 - Editar Perfil                   *****");
+                                System.out.println("***** 3 - Criar Utilizador                *****");
                                 System.out.println("***** 4 - Editar Utilizador               *****");
-                                System.out.println("***** 5 - Listar Veiculos                  *****");
-                                System.out.println("***** 6 - Listar Utilizadores                *****");
+                                System.out.println("***** 5 - Listar Veiculos                 *****");
+                                System.out.println("***** 6 - Listar Utilizadores             *****");
                                 System.out.println("***** 0 - Logout                          *****");
                                 System.out.println("\n***********************************************");
                                 System.out.print("Insira a Opção que deseja: ");
