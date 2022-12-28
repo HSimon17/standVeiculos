@@ -1,9 +1,11 @@
+import java.util.Date;
+
 public class Reserva {
     private String data; // mudar para date
     private String matricula;
     private int nif;
     enum Estado {
-        VALIDA,
+        POR_VALIDAR,
         CANCELADA,
         CONCLUIDA
     }
@@ -13,13 +15,14 @@ public class Reserva {
             this.data = "";
             this.nif= nif ;
             this.matricula = matricula;
-            this.estado = Estado.VALIDA;
+            this.estado = Estado.POR_VALIDAR;
     }
+
     public String getData() {
             return data;
     }
-    public void setData(String data) {
-            this.data = data;
+    public void setData(String date) {
+            this.data = date;
         }
     public void setNif(int nif) {
         this.nif = nif;

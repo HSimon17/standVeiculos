@@ -17,7 +17,7 @@ public class Main {
         String password = ler.nextLine();
         System.out.println("Cidade: ");
         String cidade = ler.nextLine();
-        System.out.println("Tipo de User(cliente/admin): ");
+        System.out.println("Tipo de User(cliente/admin/userManager): ");
         String tipoUser = ler.nextLine();
         System.out.println("Telemóvel: ");
         int telemovel = ler.nextInt();
@@ -51,7 +51,7 @@ public class Main {
         Utilizador utilizador, utilizadorNovo = null;
         Automovel automovel = null, automovelNovo = null;
         int nif, ano, indiceUtilizador, indiceAutomovel;
-        String nome, apelido, email, password, cidade, tipoUser, matricula, marca, modelo, cor;
+        String nome, apelido, email, password, cidade, tipoUser, matricula, marca, modelo, cor, data;
         Float kms, preco;
         boolean existe = false;
 
@@ -564,18 +564,26 @@ public class Main {
                                     case 5:
                                         System.out.println("\n\n*****       Reservar Automóvel       *****");
 
+                                        for (Automovel auto : automoveis) {
+                                            if (auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
+                                                System.out.println(auto.matriculas());
+                                            }
+                                        }
+
                                         System.out.println("Insira a matrícula: ");
                                         matricula = ler.next();
 
                                         for (Automovel auto: automoveis){
                                             if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
-                                                System.out.println("Insira a data");
-                                                //data_reserva = ler.next();
-                                                //utilizador.reservarVeiculo(matricula, data_reserva);
+                                                System.out.println("Insira a data: ");
+                                                data = ler.next();
+                                                utilizador.reservarAutomovel(matricula, data);
                                                 auto.setEstado(Automovel.Estado.RESERVADO);
+                                                System.out.println("Reserva efetuada com sucesso!!");
+                                            }else {
+                                                System.out.println("Reserva não efetuada!!");
                                             }
                                         }
-
                                         break;
                                     case 6:
                                         int menu7;
@@ -595,6 +603,8 @@ public class Main {
                                                 case 1:
                                                     break;
                                                 case 2:
+                                                    System.out.println("\n\n*****      Histórico de Reservas       *****");
+                                                    System.out.println(utilizador.reservasFeitas());
                                                     break;
                                                 case 3:
                                                     break;
@@ -767,14 +777,14 @@ public class Main {
                                     case 6:
                                     int menu9;
                                     do {
-                                        System.out.println("\n\n*****     Listar Utilizadores      *****");
-                                        System.out.println("\n*************************************");
-                                        System.out.println("**** 1 - Listar por Cidade          ****");
-                                        System.out.println("**** 2 - Listar por NIF         ****");
-                                        System.out.println("**** 3 - Listar por Tipo            ****");
-                                        System.out.println("**** 4 - Listar Todos os Utilizadores          ****");
-                                        System.out.println("**** 0 - Sair                      ****");
-                                        System.out.println("\n*************************************");
+                                        System.out.println("\n\n*****     Listar Utilizadores          *****");
+                                        System.out.println("\n*********************************************");
+                                        System.out.println("**** 1 - Listar por Cidade                ****");
+                                        System.out.println("**** 2 - Listar por NIF                   ****");
+                                        System.out.println("**** 3 - Listar por Tipo                  ****");
+                                        System.out.println("**** 4 - Listar Todos os Utilizadores     ****");
+                                        System.out.println("**** 0 - Sair                             ****");
+                                        System.out.println("\n*********************************************");
                                         System.out.print("\nInsira a opção que deseja: ");
                                         menu9 = ler.nextInt();
                                         switch (menu9){

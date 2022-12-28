@@ -10,6 +10,7 @@ public class Utilizador {
     private String cidade;
     private int telemovel;
     private String tipoUser;
+    private ArrayList<Reserva> reservas;
 
     public Utilizador(){
         this.nome = "";
@@ -21,6 +22,7 @@ public class Utilizador {
         this.tipoUser = "";
         this.email = "";
         this.password = "";
+        this.reservas = new ArrayList<Reserva>();
     }
 
     public Utilizador(String nome, String apelido, String email, String password, int nif, int telemovel, String cidade, String tipoUser) {
@@ -32,6 +34,17 @@ public class Utilizador {
         this.telemovel = telemovel;
         this.cidade = cidade;
         this.tipoUser = tipoUser;
+        this.reservas = new ArrayList<Reserva>();
+    }
+
+    public void reservarAutomovel(String matricula, String data){
+
+        Reserva reserva;
+
+        reserva = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR);
+
+        reservas.add(reserva);
+
     }
 
     public String getNome() {
@@ -75,6 +88,8 @@ public class Utilizador {
         return email;
     }
 
+
+
 @Override
 
     public String toString(){
@@ -102,6 +117,20 @@ public class Utilizador {
     public String nifs(){
         String str = "\n\tNIF: " +nif;
 
+        return str;
+    }
+
+    public String reservasFeitas(){
+        int i;
+        String str = null;
+        System.out.println("\n\n*****       Informações das Reservas       *****");
+        System.out.println("\n*************************************************");
+        for (i=0; i<reservas.size(); i++){
+            str = "\n\t\t\t Matrícula: " +reservas.get(i).getMatricula();
+            str += "\n\t\t\t Data da Reserva: " +reservas.get(i).getData();
+            str += "\n\t\t\t Estado da Reserva: " +reservas.get(i).getEstado();
+            str += "\n\n";
+        }
         return str;
     }
 }
