@@ -48,7 +48,7 @@ public class Main {
         ArrayList<Utilizador> utilizadores = new ArrayList();
         ArrayList<Automovel> automoveis = new ArrayList<>();
 
-        Utilizador utilizador, utilizadorNovo = null;
+        Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
         int nif, ano, indiceUtilizador, indiceAutomovel;
         String nome, apelido, email, password, cidade, tipoUser, matricula, marca, modelo, cor, data;
@@ -617,16 +617,16 @@ public class Main {
                             int menu8;
                             do {
                                 System.out.println(utilizador.ola());
-                                System.out.println("\n\n**********       Menu UserManager          **********");
-                                System.out.println("\n***********************************************");
-                                System.out.println("***** 1 - Visualizar Perfil              *****");
-                                System.out.println("***** 2 - Editar Perfil               *****");
-                                System.out.println("***** 3 - Criar Utilizador             *****");
-                                System.out.println("***** 4 - Editar Utilizador               *****");
-                                System.out.println("***** 5 - Listar Veiculos                  *****");
-                                System.out.println("***** 6 - Listar Utilizadores                *****");
-                                System.out.println("***** 0 - Logout                          *****");
-                                System.out.println("\n***********************************************");
+                                System.out.println("\n\n**********         Menu UserManager          **********");
+                                System.out.println("\n********************************************************");
+                                System.out.println("***** 1 - Visualizar Perfil                         *****");
+                                System.out.println("***** 2 - Editar Perfil                             *****");
+                                System.out.println("***** 3 - Criar Utilizador                          *****");
+                                System.out.println("***** 4 - Editar Utilizador                         *****");
+                                System.out.println("***** 5 - Listar Veiculos                           *****");
+                                System.out.println("***** 6 - Listar Utilizadores                       *****");
+                                System.out.println("***** 0 - Logout                                    *****");
+                                System.out.println("\n********************************************************");
                                 System.out.print("Insira a Opção que deseja: ");
                                 menu8 = ler.nextInt();
                                 switch (menu8){
@@ -697,12 +697,12 @@ public class Main {
                                     } while (menu5 != 0);
                                     break;
                                     case 3:
-                                        utilizador = adicionarUtilizador();
-                                        if (utilizador != null) {
+                                        utilizadorCriado = adicionarUtilizador();
+                                        if (utilizadorCriado != null) {
                                             existe = false;
                                         }
                                         for (Utilizador user : utilizadores){
-                                            if (utilizador.getNif() == user.getNif()) {
+                                            if (utilizadorCriado.getNif() == user.getNif()) {
                                                 existe = true;
                                             }
                                         }
@@ -710,7 +710,7 @@ public class Main {
                                             System.out.println("NIF já existente!\n");
                                         } else {
                                             System.out.println("Utilizador Registado com Sucesso!\n");
-                                            utilizadores.add(utilizador);
+                                            utilizadores.add(utilizadorCriado);
                                         }
                                         break;
                                     case 4: break;
