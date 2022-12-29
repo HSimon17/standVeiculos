@@ -345,6 +345,20 @@ public class Main {
                                     case 6:
                                         break;
                                     case 7:
+                                        for (Automovel auto : automoveis) {
+                                            if (auto.getEstado().equals(Automovel.Estado.RESERVADO)){
+                                                System.out.println(auto.matriculas());
+                                            }
+                                        }
+                                        System.out.println("Insira a matrícula: ");
+                                        matricula = ler.next();
+
+                                        for (Automovel auto: automoveis){
+                                            if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.RESERVADO)) {
+                                                auto.setEstado(Automovel.Estado.DISPONIVEL);
+                                                System.out.println("Reserva Cancelada!!");
+                                            }
+                                        }
                                         break;
                                     case 8:
                                         break;
@@ -635,7 +649,11 @@ public class Main {
                                                     break;
                                                 case 2:
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
-                                                    System.out.println(utilizador.reservasFeitas());
+                                                    for(Automovel auto : automoveis){
+                                                        if(auto.getEstado().equals(Automovel.Estado.RESERVADO)){
+                                                            System.out.println(utilizador.reservasFeitas());
+                                                        }
+                                                    }
                                                     break;
                                                 case 3:
                                                     System.out.println("\n\n*****      Histórico de Ações       *****");
