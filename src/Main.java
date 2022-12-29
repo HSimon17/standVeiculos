@@ -47,6 +47,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Utilizador> utilizadores = new ArrayList();
         ArrayList<Automovel> automoveis = new ArrayList<>();
+        ArrayList<Reserva> reservas = new ArrayList<>();
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
@@ -314,6 +315,26 @@ public class Main {
                                     case 5:
                                         break;
                                     case 6:
+                                        System.out.println("\n\n*****     Validar Reservas      *****");
+
+                                        for (Utilizador user : utilizadores) {
+                                                System.out.println(user.reservasFeitas());
+                                        }
+
+                                        System.out.println("Insira o Nif de quem quer validar a reserva: ");
+                                        nif = ler.nextInt();
+
+                                        for (Reserva reserva: reservas){
+                                            if (reserva.getNif() == nif && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)){
+                                                for (Automovel auto: automoveis){
+                                                    if (auto.getMatricula().equals(reserva.getMatricula())){
+                                                        auto.setEstado(Automovel.Estado.VENDIDO);
+                                                        reserva.setEstado(Reserva.Estado.CONCLUIDA);
+                                                        System.out.println("Reserva Validada Com Sucesso!!");
+                                                    }
+                                                }
+                                            }
+                                        }
                                         break;
                                     case 7:
                                         break;
@@ -579,8 +600,6 @@ public class Main {
                                                 utilizador.reservarAutomovel(matricula, data);
                                                 auto.setEstado(Automovel.Estado.RESERVADO);
                                                 System.out.println("Reserva efetuada com sucesso!!");
-                                            }else {
-                                                System.out.println("Reserva não efetuada!!");
                                             }
                                         }
                                         break;

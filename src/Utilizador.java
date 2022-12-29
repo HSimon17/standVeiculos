@@ -90,6 +90,21 @@ public class Utilizador {
     public ArrayList<Reserva> getReservas() { return reservas; }
     public void setReservas(ArrayList<Reserva> reservas) { this.reservas = reservas; }
 
+    public String reservasFeitas(){
+        int i;
+        String str = null;
+        System.out.println("\n\n*****       Informações das Reservas       *****");
+        System.out.println("\n*************************************************");
+        for (i=0; i<reservas.size(); i++){
+            str = "\n\t\t\t NIF: " +reservas.get(i).getNif();
+            str += "\n\t\t\t Matrícula: " +reservas.get(i).getMatricula();
+            str += "\n\t\t\t Data da Reserva: " +reservas.get(i).getData();
+            str += "\n\t\t\t Estado da Reserva: " +reservas.get(i).getEstado();
+            str += "\n\n";
+        }
+        return str;
+    }
+
     @Override
 
     public String toString(){
@@ -104,6 +119,15 @@ public class Utilizador {
         str += "\n\t\t\t Cidade:   " +cidade;
         str += "\n\t\t\t Telemóvel: " +telemovel;
         str += "\n\t\t\t NIF: " +nif;
+
+        str += "\n\t\t\tReservas: ";
+
+        for(Reserva r: reservas){
+            str += "\t\t\tMatricula: " + r.getMatricula();
+            str += "\t\t\tData reserva: " + r.getData();
+            str += "\t\t\tEstado da reserva: " + r.getEstado();
+            str += "\n\n";
+        }
 
         return str;
     }
@@ -120,19 +144,7 @@ public class Utilizador {
         return str;
     }
 
-    public String reservasFeitas(){
-        int i;
-        String str = null;
-        System.out.println("\n\n*****       Informações das Reservas       *****");
-        System.out.println("\n*************************************************");
-        for (i=0; i<reservas.size(); i++){
-            str = "\n\t\t\t Matrícula: " +reservas.get(i).getMatricula();
-            str += "\n\t\t\t Data da Reserva: " +reservas.get(i).getData();
-            str += "\n\t\t\t Estado da Reserva: " +reservas.get(i).getEstado();
-            str += "\n\n";
-        }
-        return str;
-    }
+
 }
 
 
