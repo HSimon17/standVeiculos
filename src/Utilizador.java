@@ -87,10 +87,10 @@ public class Utilizador {
     public String getEmail() {
         return email;
     }
+    public ArrayList<Reserva> getReservas() { return reservas; }
+    public void setReservas(ArrayList<Reserva> reservas) { this.reservas = reservas; }
 
-
-
-@Override
+    @Override
 
     public String toString(){
 
