@@ -51,7 +51,7 @@ public class Main {
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
-        int nif, ano, indiceUtilizador, indiceAutomovel;
+        int nif, telemovel,  ano, indiceUtilizador, indiceAutomovel;
         String nome, apelido, email, password, cidade, tipoUser, matricula, marca, modelo, cor, data;
         Float kms, preco;
         boolean existe = false;
@@ -244,9 +244,9 @@ public class Main {
                                         System.out.println("\n\n*****     Desativar Automóvel      *****");
 
                                         for(Automovel auto : automoveis){
-                                            if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
+                                            //if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
                                                 System.out.println(auto.matriculas());
-                                            }
+                                            //}
                                         }
 
                                         System.out.println("Insira a matrícula: ");
@@ -470,7 +470,7 @@ public class Main {
                                                 case 6:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere o Telemóvel: ");
-                                                    int telemovel = Integer.parseInt(ler.next());
+                                                    telemovel = ler.nextInt();
                                                     utilizador.setTelemovel(telemovel);
                                                     break;
                                                 default:
@@ -557,7 +557,7 @@ public class Main {
                                                 case 6:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere o Telemóvel: ");
-                                                    int telemovel = Integer.parseInt(ler.next());
+                                                    telemovel = ler.nextInt();
                                                     utilizador.setTelemovel(telemovel);
                                                     break;
                                                 default:
@@ -774,7 +774,7 @@ public class Main {
                                             case 6:
                                                 utilizadorNovo = utilizador;
                                                 System.out.println("Altere o Telemóvel: ");
-                                                int telemovel = Integer.parseInt(ler.next());
+                                                telemovel = ler.nextInt();
                                                 utilizador.setTelemovel(telemovel);
                                                 break;
                                             default:
@@ -819,62 +819,62 @@ public class Main {
                                                 int menu3;
                                                 do {
                                                     System.out.println("\n\n*****        Editar Utilizador         *****");
-                                                    System.out.println("\n********************************************");
-                                                    System.out.println("**** 1 - Nome                          *****");
-                                                    System.out.println("**** 2 - Apelido                       *****");
-                                                    System.out.println("**** 3 - Email                      *****");
-                                                    System.out.println("**** 4 - Password                      *****");
-                                                    System.out.println("**** 5 - Cidade                        *****");
-                                                    System.out.println("**** 6 - Telemóvel                     *****");
-                                                    System.out.println("**** 7 - Tipo de Utilizador            *****");
-                                                    System.out.println("**** 0 - Sair                          *****");
-                                                    System.out.println("\n********************************************");
+                                                    System.out.println("\n*********************************************");
+                                                    System.out.println("**** 1 - Nome                            *****");
+                                                    System.out.println("**** 2 - Apelido                         *****");
+                                                    System.out.println("**** 3 - Email                           *****");
+                                                    System.out.println("**** 4 - Password                        *****");
+                                                    System.out.println("**** 5 - Cidade                          *****");
+                                                    System.out.println("**** 6 - Telemóvel                       *****");
+                                                    System.out.println("**** 7 - Tipo de Utilizador              *****");
+                                                    System.out.println("**** 0 - Sair                            *****");
+                                                    System.out.println("\n*********************************************");
                                                     System.out.print("Insira a Informação que deseja Editar: ");
                                                     menu3 = ler.nextInt();
                                                     switch (menu3) {
                                                         case 0:
                                                             break;
                                                         case 1:
-                                                            utilizadorNovo = utilizador;
+                                                            utilizadorNovo = user;
                                                             System.out.println("Altere o Nome: ");
                                                             nome = ler.next();
-                                                            utilizador.setNome(nome);
+                                                            user.setNome(nome);
                                                             break;
                                                         case 2:
-                                                            utilizadorNovo = utilizador;
+                                                            utilizadorNovo = user;
                                                             System.out.println("Altere o Apelido: ");
                                                             apelido = ler.next();
-                                                            utilizador.setApelido(apelido);
+                                                            user.setApelido(apelido);
                                                             break;
                                                         case 3:
-                                                            utilizadorNovo = utilizador;
+                                                            utilizadorNovo = user;
                                                             System.out.println("Altere o Email: ");
                                                             email = ler.next();
-                                                            utilizador.setEmail(email);
+                                                            user.setEmail(email);
                                                             break;
                                                         case 4:
-                                                            utilizadorNovo = utilizador;
+                                                            utilizadorNovo = user;
                                                             System.out.println("Altere a Password: ");
                                                             password = ler.next();
-                                                            utilizador.setPassword(password);
+                                                            user.setPassword(password);
                                                             break;
                                                         case 5:
-                                                            utilizadorNovo = utilizador;
+                                                            utilizadorNovo = user;
                                                             System.out.println("Altere a Cidade: ");
                                                             cidade = ler.next();
-                                                            utilizador.setCidade(cidade);
+                                                            user.setCidade(cidade);
                                                             break;
                                                         case 6:
-                                                            utilizadorNovo = utilizador;
+                                                            utilizadorNovo = user;
                                                             System.out.println("Altere o Telemóvel: ");
-                                                            int telemovel = Integer.parseInt(ler.next());
-                                                            utilizador.setTelemovel(telemovel);
+                                                            telemovel = Integer.parseInt(ler.next());
+                                                            user.setTelemovel(telemovel);
                                                             break;
                                                         case 7:
-                                                            utilizadorNovo = utilizador;
+                                                            utilizadorNovo = user;
                                                             System.out.println("Altere o Tipo de User (cliente/userManager/admin): ");
                                                             tipoUser = ler.next();
-                                                            utilizador.setTipoUser(tipoUser);
+                                                            user.setTipoUser(tipoUser);
                                                             break;
                                                         default:
                                                             System.out.println("Opcao Inválida!\n\n");
