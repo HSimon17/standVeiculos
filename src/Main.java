@@ -241,6 +241,23 @@ public class Main {
                                         }
                                         break;
                                     case 3:
+                                        System.out.println("\n\n*****     Desativar Automóvel      *****");
+
+                                        for(Automovel auto : automoveis){
+                                            if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
+                                                System.out.println(auto.matriculas());
+                                            }
+                                        }
+
+                                        System.out.println("Insira a matrícula: ");
+                                        matricula = ler.next();
+
+                                        for (Automovel auto: automoveis) {
+                                            if (auto.getMatricula().equals(matricula)) {
+                                                auto.setEstado(Automovel.Estado.DESATIVO);
+                                                System.out.println("Automóvel Desativado com Sucesso!!");
+                                            }
+                                        }
                                         break;
                                     case 4:
                                         int menu6;
@@ -313,6 +330,7 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 5:
+                                        System.out.println("\n\n*****     Registar Compra      *****");
                                         for (Utilizador user : utilizadores) {
                                             if(user.getTipoUser().equals("cliente")) {
                                                 System.out.println(user.nifs());
@@ -335,13 +353,11 @@ public class Main {
                                                     System.out.println("Insira a data: ");
                                                     data = ler.next();
                                                     utilizador.reservarAutomovel(matricula, data);
-                                                    auto.setEstado(Automovel.Estado.RESERVADO);
+                                                    auto.setEstado(Automovel.Estado.VENDIDO);
                                                     System.out.println("Reserva efetuada com sucesso!!");
                                                 }
                                             }
                                         }
-
-
                                         break;
                                     case 6:
                                         System.out.println("\n\n*****     Validar Reservas      *****");
@@ -366,6 +382,7 @@ public class Main {
                                         }
                                         break;
                                     case 7:
+                                        System.out.println("\n\n*****     Cancelar Reservas      *****");
                                         for (Automovel auto : automoveis) {
                                             if (auto.getEstado().equals(Automovel.Estado.RESERVADO)){
                                                 System.out.println(auto.matriculas());
