@@ -312,6 +312,35 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 5:
+                                        for (Utilizador user : utilizadores) {
+                                            if(user.getTipoUser().equals("cliente")) {
+                                                System.out.println(user.nifs());
+                                            }
+                                        }
+                                        System.out.println("Escolha o Cliente pelo seu nif: ");
+                                        nif = Integer.parseInt(ler.next());
+
+                                        for(Automovel auto : automoveis){
+                                            if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
+                                                System.out.println(auto.matriculas());
+                                            }
+                                        }
+                                        System.out.println("Escolha o Veículo pela sua Matrícula: ");
+                                        matricula = ler.next();
+
+                                        for (Automovel auto: automoveis){
+                                            for (Utilizador user : utilizadores){
+                                                if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL) && user.getNif() == nif) {
+                                                    System.out.println("Insira a data: ");
+                                                    data = ler.next();
+                                                    utilizador.reservarAutomovel(matricula, data);
+                                                    auto.setEstado(Automovel.Estado.RESERVADO);
+                                                    System.out.println("Reserva efetuada com sucesso!!");
+                                                }
+                                            }
+                                        }
+
+
                                         break;
                                     case 6:
                                         break;
@@ -551,8 +580,10 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 4:
-                                        for (Automovel auto : automoveis) {
-                                            System.out.println(auto.matriculas());
+                                        for(Automovel auto : automoveis){
+                                            if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
+                                                System.out.println(auto.matriculas());
+                                            }
                                         }
                                         System.out.println("Escolha o Veículo pela sua Matrícula: ");
                                         matricula = ler.next();
@@ -792,6 +823,9 @@ public class Main {
                                                         default:
                                                             System.out.println("Opcao Inválida!\n\n");
                                                     }
+                                                    indiceUtilizador = utilizadores.indexOf(user);
+                                                    utilizadores.set(indiceUtilizador, utilizadorNovo);
+                                                    user = utilizadorNovo;
                                                 } while (menu3 != 0);
                                             }
                                         }
