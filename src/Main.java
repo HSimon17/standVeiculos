@@ -244,9 +244,9 @@ public class Main {
                                         System.out.println("\n\n*****     Desativar Automóvel      *****");
 
                                         for(Automovel auto : automoveis){
-                                            //if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
+                                            if(!auto.getEstado().equals(Automovel.Estado.DESATIVO)){
                                                 System.out.println(auto.matriculas());
-                                            //}
+                                            }
                                         }
 
                                         System.out.println("Insira a matrícula: ");
@@ -354,7 +354,7 @@ public class Main {
                                                     data = ler.next();
                                                     utilizador.reservarAutomovel(matricula, data);
                                                     auto.setEstado(Automovel.Estado.VENDIDO);
-                                                    System.out.println("Reserva efetuada com sucesso!!");
+                                                    System.out.println("Compra efetuada com sucesso!!");
                                                 }
                                             }
                                         }
