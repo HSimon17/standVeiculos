@@ -176,7 +176,6 @@ public class Main {
                                         for (Automovel auto: automoveis){
                                             if (auto.getMatricula().equals(matricula)){
                                                 System.out.println(auto.toString());
-
                                                 int menu3;
                                                 do {
                                                     System.out.println("\n\n*****        Editar Automóvel         *****");
@@ -198,44 +197,44 @@ public class Main {
                                                             automovelNovo = auto;
                                                             System.out.println("Altere a Marca: ");
                                                             marca = ler.next();
-                                                            automovel.setMarca(marca);
+                                                            auto.setMarca(marca);
                                                             break;
                                                         case 2:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere o Modelo: ");
                                                             modelo = ler.next();
-                                                            automovel.setModelo(modelo);
+                                                            auto.setModelo(modelo);
                                                             break;
                                                         case 3:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere a Cor: ");
                                                             cor = ler.next();
-                                                            automovel.setCor(cor);
+                                                            auto.setCor(cor);
                                                             break;
                                                         case 4:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere o Ano: ");
                                                             ano = ler.nextInt();
-                                                            automovel.setAno(ano);
+                                                            auto.setAno(ano);
                                                             break;
                                                         case 5:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere os Kms: ");
                                                             kms = ler.nextFloat();
-                                                            automovel.setKms(kms);
+                                                            auto.setKms(kms);
                                                             break;
                                                         case 6:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere o Preço: ");
                                                             preco = ler.nextFloat();
-                                                            automovel.setPreco(preco);
+                                                            auto.setPreco(preco);
                                                             break;
                                                         default:
                                                             System.out.println("Opcao Inválida!\n\n");
                                                     }
                                                     indiceAutomovel = automoveis.indexOf(auto);
                                                     automoveis.set(indiceAutomovel, automovelNovo);
-                                                    automovel = auto;
+                                                    auto = automovelNovo;
                                                 } while (menu3 != 0);
                                             }
                                         }
