@@ -47,6 +47,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Utilizador> utilizadores = new ArrayList();
         ArrayList<Automovel> automoveis = new ArrayList<>();
+        ArrayList<Reserva> reservas = new ArrayList<>();
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
@@ -176,7 +177,6 @@ public class Main {
                                         for (Automovel auto: automoveis){
                                             if (auto.getMatricula().equals(matricula)){
                                                 System.out.println(auto.toString());
-
                                                 int menu3;
                                                 do {
                                                     System.out.println("\n\n*****        Editar Automóvel         *****");
@@ -198,44 +198,44 @@ public class Main {
                                                             automovelNovo = auto;
                                                             System.out.println("Altere a Marca: ");
                                                             marca = ler.next();
-                                                            automovel.setMarca(marca);
+                                                            auto.setMarca(marca);
                                                             break;
                                                         case 2:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere o Modelo: ");
                                                             modelo = ler.next();
-                                                            automovel.setModelo(modelo);
+                                                            auto.setModelo(modelo);
                                                             break;
                                                         case 3:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere a Cor: ");
                                                             cor = ler.next();
-                                                            automovel.setCor(cor);
+                                                            auto.setCor(cor);
                                                             break;
                                                         case 4:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere o Ano: ");
                                                             ano = ler.nextInt();
-                                                            automovel.setAno(ano);
+                                                            auto.setAno(ano);
                                                             break;
                                                         case 5:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere os Kms: ");
                                                             kms = ler.nextFloat();
-                                                            automovel.setKms(kms);
+                                                            auto.setKms(kms);
                                                             break;
                                                         case 6:
                                                             automovelNovo = auto;
                                                             System.out.println("Altere o Preço: ");
                                                             preco = ler.nextFloat();
-                                                            automovel.setPreco(preco);
+                                                            auto.setPreco(preco);
                                                             break;
                                                         default:
                                                             System.out.println("Opcao Inválida!\n\n");
                                                     }
                                                     indiceAutomovel = automoveis.indexOf(auto);
                                                     automoveis.set(indiceAutomovel, automovelNovo);
-                                                    automovel = auto;
+                                                    auto = automovelNovo;
                                                 } while (menu3 != 0);
                                             }
                                         }
@@ -315,6 +315,26 @@ public class Main {
                                     case 5:
                                         break;
                                     case 6:
+                                        System.out.println("\n\n*****     Validar Reservas      *****");
+
+                                        for (Utilizador user : utilizadores) {
+                                                System.out.println(user.reservasFeitas());
+                                        }
+
+                                        System.out.println("Insira o Nif de quem quer validar a reserva: ");
+                                        nif = ler.nextInt();
+
+                                        for (Reserva reserva: reservas){
+                                            if (reserva.getNif() == nif && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)){
+                                                for (Automovel auto: automoveis){
+                                                    if (auto.getMatricula().equals(reserva.getMatricula())){
+                                                        auto.setEstado(Automovel.Estado.VENDIDO);
+                                                        reserva.setEstado(Reserva.Estado.CONCLUIDA);
+                                                        System.out.println("Reserva Validada Com Sucesso!!");
+                                                    }
+                                                }
+                                            }
+                                        }
                                         break;
                                     case 7:
                                         break;
@@ -580,8 +600,6 @@ public class Main {
                                                 utilizador.reservarAutomovel(matricula, data);
                                                 auto.setEstado(Automovel.Estado.RESERVADO);
                                                 System.out.println("Reserva efetuada com sucesso!!");
-                                            }else {
-                                                System.out.println("Reserva não efetuada!!");
                                             }
                                         }
                                         break;

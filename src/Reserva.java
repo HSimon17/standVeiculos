@@ -21,8 +21,8 @@ public class Reserva {
     public String getData() {
             return data;
     }
-    public void setData(String date) {
-            this.data = date;
+    public void setData(String data) {
+            this.data = data;
         }
     public void setNif(int nif) {
         this.nif = nif;
@@ -42,4 +42,23 @@ public class Reserva {
     public Estado getEstado() {
         return estado;
     }
+
+
+
+    public String reservas(){
+
+        System.out.println("\n\n*****       Reservas Realizadas          *****");
+        System.out.println("\n*************************************************");
+        String str = "\n\t\t\t NIF: " +nif;
+        str += "\n\t\t\t Data: " +data;
+        str += "\n\t\t\t Matrícula: " +matricula;
+        str += "\n\t\t\t Estado da Reserva: " +estado;
+
+        return str;
+    }
+
 }
+
+
+
+
