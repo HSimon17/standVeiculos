@@ -9,8 +9,7 @@ public class Vendas {
     }
     private Estado estado;
 
-    public Vendas(int nif, String matricula, String data, Estado estado) {
-            this.data = "";
+    public Vendas(int nif, String matricula, Estado estado) {
             this.nif= nif ;
             this.matricula = matricula;
             this.estado = Estado.CONCLUIDA; //ao vender um veiculo o estado da reserva passa a concluido

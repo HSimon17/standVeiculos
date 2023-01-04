@@ -48,6 +48,7 @@ public class Main {
         ArrayList<Utilizador> utilizadores = new ArrayList<>();
         ArrayList<Automovel> automoveis = new ArrayList<>();
         ArrayList<Reserva> reservas = new ArrayList<>();
+        ArrayList<Vendas> vendas = new ArrayList<>();
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
@@ -348,14 +349,14 @@ public class Main {
                                         System.out.println("Escolha o Veículo pela sua Matrícula: ");
                                         matricula = ler.next();
 
-                                        for (Automovel auto: automoveis){
-                                            for (Utilizador user : utilizadores){
-                                                if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL) && user.getNif() == nif) {
-                                                    System.out.println("Insira a data: ");
-                                                    data = ler.next();
-                                                    utilizador.reservarAutomovel(matricula, data);
-                                                    auto.setEstado(Automovel.Estado.VENDIDO);
-                                                    System.out.println("Compra efetuada com sucesso!!");
+                                        for (Utilizador user : utilizadores){
+                                            vendas = user.getVendas();
+                                                for (Automovel auto: automoveis){
+                                                    if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL) && user.getNif() == nif) {
+                                                        user.registarVenda(nif, matricula);
+                                                        auto.setEstado(Automovel.Estado.VENDIDO);
+                                                        System.out.println("Compra efetuada com sucesso!!");
+
                                                 }
                                             }
                                         }
@@ -401,6 +402,19 @@ public class Main {
                                         }
                                         break;
                                     case 8:
+                                        System.out.println("Lista dos Próximos Clientes:\n\n ");
+
+                                        for(Utilizador user: utilizadores){
+                                            reservas = user.getReservas();
+                                            for(Reserva reserva: reservas){
+                                                if(reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)){
+                                                    System.out.println("\nMatricula: " + reserva.getMatricula());
+                                                    System.out.println("\nNif cliente: " + reserva.getNif());
+                                                    System.out.println("\nData reserva: " + reserva.getData());
+                                                    System.out.println("\n*************************************");
+                                                }
+                                            }
+                                        }
                                         break;
                                     case 9:
                                         for (Utilizador user : utilizadores) {
@@ -689,7 +703,7 @@ public class Main {
                                                     for(Utilizador user : utilizadores){
                                                         for (Automovel auto: automoveis){
                                                             if(auto.getEstado().equals(Automovel.Estado.VENDIDO)){
-                                                                System.out.println(user.reservasFeitas());
+                                                                System.out.println(user.vendasFeitas());
                                                             }
                                                         }
                                                     }
