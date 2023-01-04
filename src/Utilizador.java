@@ -39,11 +39,11 @@ public class Utilizador {
 
     public void reservarAutomovel(String matricula, String data){
 
-        Reserva reserva;
+        Reserva res;
 
-        reserva = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR);
+        res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR);
 
-        reservas.add(reserva);
+        reservas.add(res);
 
     }
 

@@ -12,9 +12,9 @@ public class Reserva {
     private Estado estado;
 
     public Reserva(int nif, String matricula, String data, Estado estado) {
-            this.data = "";
-            this.nif= nif ;
+            this.nif = nif;
             this.matricula = matricula;
+            this.data = data;
             this.estado = Estado.POR_VALIDAR;
     }
 
@@ -44,8 +44,7 @@ public class Reserva {
     }
 
 
-
-    public String reservas(){
+    /* public String reservasEfetuadas(){
 
         System.out.println("\n\n*****       Reservas Realizadas          *****");
         System.out.println("\n*************************************************");
@@ -55,7 +54,7 @@ public class Reserva {
         str += "\n\t\t\t Estado da Reserva: " +estado;
 
         return str;
-    }
+    } */
 
 }
 

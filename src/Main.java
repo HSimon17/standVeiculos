@@ -45,12 +45,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        ArrayList<Utilizador> utilizadores = new ArrayList();
+        ArrayList<Utilizador> utilizadores = new ArrayList<>();
         ArrayList<Automovel> automoveis = new ArrayList<>();
         ArrayList<Reserva> reservas = new ArrayList<>();
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
+
         int nif, telemovel,  ano, indiceUtilizador, indiceAutomovel;
         String nome, apelido, email, password, cidade, tipoUser, matricula, marca, modelo, cor, data;
         Float kms, preco;
@@ -369,13 +370,14 @@ public class Main {
                                         System.out.println("Insira o Nif de quem quer validar a reserva: ");
                                         nif = ler.nextInt();
 
-                                        for (Reserva reserva: reservas){
-                                            if (reserva.getNif() == nif && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)){
+                                        for (Utilizador user : utilizadores){
+                                            reservas = user.getReservas();
+                                            for (Reserva reserva: reservas){
                                                 for (Automovel auto: automoveis){
-                                                    if (auto.getMatricula().equals(reserva.getMatricula())){
-                                                        auto.setEstado(Automovel.Estado.VENDIDO);
-                                                        reserva.setEstado(Reserva.Estado.CONCLUIDA);
-                                                        System.out.println("Reserva Validada Com Sucesso!!");
+                                                    if (reserva.getNif() == nif && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && auto.getMatricula().equals(reserva.getMatricula())){
+                                                            auto.setEstado(Automovel.Estado.VENDIDO);
+                                                            reserva.setEstado(Reserva.Estado.CONCLUIDA);
+                                                            System.out.println("Reserva Validada Com Sucesso!!");
                                                     }
                                                 }
                                             }
@@ -684,12 +686,21 @@ public class Main {
                                                     break;
                                                 case 1:
                                                     System.out.println("\n\n*****      Histórico de Compras      *****");
+                                                    for(Utilizador user : utilizadores){
+                                                        for (Automovel auto: automoveis){
+                                                            if(auto.getEstado().equals(Automovel.Estado.VENDIDO)){
+                                                                System.out.println(user.reservasFeitas());
+                                                            }
+                                                        }
+                                                    }
                                                     break;
                                                 case 2:
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
-                                                    for(Automovel auto : automoveis){
-                                                        if(auto.getEstado().equals(Automovel.Estado.RESERVADO)){
-                                                            System.out.println(utilizador.reservasFeitas());
+                                                    for(Utilizador user : utilizadores){
+                                                        for (Automovel auto: automoveis){
+                                                            if(auto.getEstado().equals(Automovel.Estado.RESERVADO)){
+                                                                System.out.println(user.reservasFeitas());
+                                                            }
                                                         }
                                                     }
                                                     break;
