@@ -403,7 +403,7 @@ public class Main {
                                         System.out.println("\n\n*****     Validar Reservas      *****");
 
                                         for (Utilizador user : utilizadores) {
-                                                System.out.println(user.reservasFeitas());
+                                                System.out.println(user.reservasFeitas(user));
                                         }
 
                                         System.out.println("Insira o Nif de quem quer validar a reserva: ");
@@ -741,23 +741,23 @@ public class Main {
                                                     break;
                                                 case 1:
                                                     System.out.println("\n\n*****      Histórico de Compras      *****");
-                                                    for(Utilizador user : utilizadores){
                                                         for (Automovel auto: automoveis){
                                                             if(auto.getEstado().equals(Automovel.Estado.VENDIDO)){
-                                                                System.out.println(user.vendasFeitas());
+                                                                System.out.println(utilizador.getVendas());
                                                             }
                                                         }
-                                                    }
                                                     break;
                                                 case 2:
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
-                                                    for(Utilizador user : utilizadores){
                                                         for (Automovel auto: automoveis){
-                                                            if(auto.getEstado().equals(Automovel.Estado.RESERVADO)){
-                                                                System.out.println(user.reservasFeitas());
+                                                            utilizador.getNif();
+                                                            for(Utilizador user : utilizadores) {
+                                                                if (auto.getEstado().equals(Automovel.Estado.RESERVADO) && utilizador.getNif() == user.getNif()) {
+                                                                    System.out.println(utilizador.getReservas());
+                                                                    System.out.println(utilizador.getNif());
+                                                                }
                                                             }
                                                         }
-                                                    }
                                                     break;
                                                 case 3:
                                                     System.out.println("\n\n*****      Histórico de Ações       *****");

@@ -36,8 +36,8 @@ public class Utilizador {
         this.telemovel = telemovel;
         this.cidade = cidade;
         this.tipoUser = tipoUser;
-        this.reservas = new ArrayList<Reserva>();
-        this.vendas = new ArrayList<Vendas>();
+        this.reservas = new ArrayList<>();
+        this.vendas = new ArrayList<>();
     }
 
     public void reservarAutomovel(String matricula, String data) throws AutomovelException{
@@ -111,20 +111,33 @@ public class Utilizador {
         return vendas;
     }
 
-    public String reservasFeitas(){
+    public String reservasFeitas(Utilizador utilizador){
         int i;
         String str = null;
         for (i=0; i<reservas.size(); i++){
-            str = "\n\t\t\t NIF: " +reservas.get(i).getNif();
-            str += "\n\t\t\t Matrícula: " +reservas.get(i).getMatricula();
-            str += "\n\t\t\t Data da Reserva: " +reservas.get(i).getData();
-            str += "\n\t\t\t Estado da Reserva: " +reservas.get(i).getEstado();
+            str = "\n\t\t\t NIF: " + utilizador.reservas.get(i).getNif();
+            str += "\n\t\t\t Matrícula: " + utilizador.reservas.get(i).getMatricula();
+            str += "\n\t\t\t Data da Reserva: " + utilizador.reservas.get(i).getData();
+            str += "\n\t\t\t Estado da Reserva: " +utilizador.reservas.get(i).getEstado();
             str += "\n\n";
         }
         return str;
     }
 
-    public String vendasFeitas(){
+//    public String reservasFeitas(Utilizador user){
+ //       int i;
+   //     String str = null;
+     //   for (i=0; i<reservas.size(); i++){
+       //     str = "\n\t\t\t NIF: " +reservas.get(i).getNif();
+         //   str += "\n\t\t\t Matrícula: " +reservas.get(i).getMatricula();
+           // str += "\n\t\t\t Data da Reserva: " +reservas.get(i).getData();
+//            str += "\n\t\t\t Estado da Reserva: " +reservas.get(i).getEstado();
+  //          str += "\n\n";
+    //    }
+   //     return str;
+   // }
+
+    public String vendasFeitas(Utilizador user){
         int i;
         String str = null;
         for (i=0; i<vendas.size(); i++){

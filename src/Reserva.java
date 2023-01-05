@@ -1,7 +1,8 @@
 import java.util.Date;
 
+// Classe das Reservas
 public class Reserva {
-    private String data; // mudar para date
+    private String data;
     private String matricula;
     private int nif;
     enum Estado {
