@@ -3,8 +3,6 @@ public class Vendas {
     private String matricula;
     private int nif;
     enum Estado {
-        VALIDA,
-        CANCELADA,
         CONCLUIDA
     }
     private Estado estado;

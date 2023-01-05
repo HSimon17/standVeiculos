@@ -23,8 +23,8 @@ public class Utilizador {
         this.tipoUser = "";
         this.email = "";
         this.password = "";
-        this.reservas = new ArrayList<Reserva>();
-        this.vendas = new ArrayList<Vendas>();
+        this.reservas = new ArrayList<>();
+        this.vendas = new ArrayList<>();
     }
 
     public Utilizador(String nome, String apelido, String email, String password, int nif, int telemovel, String cidade, String tipoUser) {
@@ -40,7 +40,7 @@ public class Utilizador {
         this.vendas = new ArrayList<Vendas>();
     }
 
-    public void reservarAutomovel(String matricula, String data){
+    public void reservarAutomovel(String matricula, String data) throws AutomovelException{
 
         Reserva res;
 
