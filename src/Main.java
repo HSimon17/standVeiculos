@@ -370,7 +370,7 @@ public class Main {
                                         System.out.println("\n\n*****     Validar Reservas      *****");
 
                                         for (Utilizador user : utilizadores) {
-                                                System.out.println(user.reservasFeitas(utilizador));
+                                                System.out.println(user.reservasFeitas());
                                         }
 
                                         System.out.println("Insira o Nif de quem quer validar a reserva: ");
@@ -706,18 +706,24 @@ public class Main {
                                                     break;
                                                 case 1:
                                                     System.out.println("\n\n*****      Histórico de Compras      *****");
-                                                        for (Automovel auto: automoveis){
-                                                            if(auto.getEstado().equals(Automovel.Estado.VENDIDO)){
-                                                                System.out.println(utilizador.reservasFeitas(utilizador));
+                                                    reservas = utilizador.getReservas();
+                                                    for (Automovel auto : automoveis) {
+                                                        for (Reserva reserva : reservas) {
+                                                            if (auto.getEstado().equals(Automovel.Estado.VENDIDO) && reserva.getEstado().equals(Reserva.Estado.CONCLUIDA)) {
+                                                                System.out.println(reserva.reservasEfetuadas());
                                                             }
                                                         }
+                                                    }
                                                     break;
                                                 case 2:
-                                                    int i;
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
                                                     reservas = utilizador.getReservas();
-                                                    for (i=0; i<reservas.size(); i++){
-                                                        System.out.println(utilizador.reservasFeitas(utilizador));
+                                                    for (Automovel auto : automoveis) {
+                                                        for (Reserva reserva : reservas) {
+                                                            if (auto.getEstado().equals(Automovel.Estado.RESERVADO) && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && reserva.getEstado().equals(Reserva.Estado.CANCELADA)) {
+                                                                System.out.println(reserva.reservasEfetuadas());
+                                                            }
+                                                        }
                                                     }
                                                     break;
                                             }

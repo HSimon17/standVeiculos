@@ -44,17 +44,15 @@ public class Reserva {
     }
 
 
-    /* public String reservasEfetuadas(){
+    public String reservasEfetuadas(){
 
-        System.out.println("\n\n*****       Reservas Realizadas          *****");
-        System.out.println("\n*************************************************");
         String str = "\n\t\t\t NIF: " +nif;
         str += "\n\t\t\t Data: " +data;
         str += "\n\t\t\t Matrícula: " +matricula;
         str += "\n\t\t\t Estado da Reserva: " +estado;
 
         return str;
-    } */
+    }
 
 }
 
