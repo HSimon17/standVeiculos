@@ -90,21 +90,21 @@ public class Utilizador {
     public ArrayList<Reserva> getReservas() { return reservas; }
     public void setReservas(ArrayList<Reserva> reservas) { this.reservas = reservas; }
 
-    public String reservasFeitas(){
+    public String reservasFeitas(Utilizador utilizador){
         int i;
         String str = null;
-        System.out.println("\n\n*****       Informações das Reservas       *****");
-        System.out.println("\n*************************************************");
+
         for (i=0; i<reservas.size(); i++){
-            str = "\n\t\t\t NIF: " +reservas.get(i).getNif();
-            str += "\n\t\t\t Matrícula: " +reservas.get(i).getMatricula();
-            str += "\n\t\t\t Data da Reserva: " +reservas.get(i).getData();
-            str += "\n\t\t\t Estado da Reserva: " +reservas.get(i).getEstado();
+            str = "\n\t\t\t NIF: " +utilizador.reservas.get(i).getNif();
+            str += "\n\t\t\t Matrícula: " +utilizador.reservas.get(i).getMatricula();
+            str += "\n\t\t\t Data da Reserva: " +utilizador.reservas.get(i).getData();
+            str += "\n\t\t\t Estado da Reserva: " +utilizador.reservas.get(i).getEstado();
             str += "\n\n";
+
+
         }
         return str;
     }
-
     @Override
 
     public String toString(){
