@@ -12,7 +12,7 @@ public class Utilizador {
     private String tipoUser;
     private ArrayList<Reserva> reservas;
 
-    public Utilizador(){
+    public Utilizador(Utilizador u1){
         this.nome = "";
         this.apelido = "";
         this.nif = 0;
