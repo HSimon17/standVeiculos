@@ -369,8 +369,9 @@ public class Main {
                                         /* Validar Reservas */
                                         System.out.println("\n\n*****     Validar Reservas      *****");
 
-                                        for (Utilizador user : utilizadores) {
-                                                System.out.println(user.reservasFeitas());
+                                        reservas = utilizador.getReservas();
+                                        for (Reserva reserva : reservas) {
+                                                System.out.println(reserva.reservasEfetuadas());
                                         }
 
                                         System.out.println("Insira o Nif de quem quer validar a reserva: ");
@@ -718,12 +719,8 @@ public class Main {
                                                 case 2:
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
                                                     reservas = utilizador.getReservas();
-                                                    for (Automovel auto : automoveis) {
-                                                        for (Reserva reserva : reservas) {
-                                                            if (auto.getEstado().equals(Automovel.Estado.RESERVADO) && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && reserva.getEstado().equals(Reserva.Estado.CANCELADA)) {
-                                                                System.out.println(reserva.reservasEfetuadas());
-                                                            }
-                                                        }
+                                                    for (Reserva reserva : reservas) {
+                                                        System.out.println(reserva.reservasEfetuadas());
                                                     }
                                                     break;
                                             }
