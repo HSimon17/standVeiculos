@@ -12,7 +12,7 @@ public class Reserva {
     }
     private Estado estado;
 
-    //Metodo que cria uma reserva
+    //Construtor que cria uma reserva
     public Reserva(int nif, String matricula, String data, Estado estado) {
             this.nif = nif;
             this.matricula = matricula;

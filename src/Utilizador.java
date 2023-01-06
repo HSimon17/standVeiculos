@@ -5,7 +5,6 @@ public class Utilizador {
     private String nome;
     private String apelido;
     private int nif;
-    private boolean login;
     private String email;
     private String password;
     private String cidade;
@@ -14,7 +13,7 @@ public class Utilizador {
     private ArrayList<Reserva> reservas;
     private ArrayList<Vendas> vendas;
 
-    // Método que cria um utilizador onde toas as variáveis são obrigatórias
+    // Construtor que cria um utilizador onde toas as variáveis são obrigatórias
     public Utilizador(String nome, String apelido, String email, String password, int nif, int telemovel, String cidade, String tipoUser) {
         this.nome = nome;
         this.apelido = apelido;
@@ -33,19 +32,20 @@ public class Utilizador {
 
         Reserva res;
 
-        res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR); // o nif da reserva é automaticamente o nif do utilizador logado
+        res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR); // o nif da reserva é o nif do utilizador logado e o estado da reserva passa automáticamente a POR_VALIDAR
 
-        reservas.add(res); // adicionar o automovel ao array das reservas
+        reservas.add(res); // adicionar a reserva ao array das reservas
 
     }
 
+    // Método que vende um automóvel
     public void venderAutomovel(int nif, String matricula, String data){
 
         Vendas venda;
 
-        venda = new Vendas(nif, matricula, data, Vendas.Estado.CONCLUIDA);
+        venda = new Vendas(nif, matricula, data, Vendas.Estado.CONCLUIDA); // o estado da venda passa automaticamente a Concluido o nif é o que o admin selecionar
 
-        vendas.add(venda);
+        vendas.add(venda); //adiciona a venda ao array das vendas
 
     }
 
@@ -57,10 +57,6 @@ public class Utilizador {
     public void setApelido(String apelido) { this.apelido = apelido; }
     public int getNif() { return nif; }
     public void setNif(int nif) { this.nif = nif; }
-    public boolean isLogin() { return login; }
-    public void setLogin(boolean login) {
-        this.login = login;
-    }
     public String getCidade() {
         return cidade;
     }
@@ -94,18 +90,6 @@ public class Utilizador {
     public ArrayList<Vendas> getVendas() { return vendas; }
     public void setVendas(ArrayList<Vendas> vendas) { this.vendas = vendas; }
 
-    public String reservasFeitas() {
-        int i;
-        String str = null;
-        for (i = 0; i < reservas.size(); i++) {
-            str = "\n\t\t\t NIF: " + reservas.get(i).getNif();
-            str += "\n\t\t\t Matrícula: " + reservas.get(i).getMatricula();
-            str += "\n\t\t\t Data da Reserva: " + reservas.get(i).getData();
-            str += "\n\t\t\t Estado da Reserva: " + reservas.get(i).getEstado();
-            str += "\n\n";
-        }
-        return str;
-    }
     @Override
 
     //Método que imprime para o ecrã as informações do perfil + as reservas e vendas efetuadas pelo utilizador

@@ -22,7 +22,7 @@ public class Automovel {
     private HashMap<Object, Automovel> automovel;
 
 
-    //Método para criar um automóvel onde todas as variáveis são obrigatórias
+    //Construtor para criar um automóvel onde todas as variáveis são obrigatórias
     public Automovel(String matricula, String marca, String modelo, String cor, int ano, float kms, float preco) {
         this.matricula = matricula;
         this.marca = marca;

@@ -10,7 +10,7 @@ public class Vendas {
     }
     private Estado estado;
 
-    //Metodo que cria uma venda
+    //Construtor que cria uma venda
     public Vendas(int nif, String matricula, String data, Estado estado) {
             this.nif= nif ;
             this.matricula = matricula;

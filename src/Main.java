@@ -5,7 +5,7 @@ public class Main {
     public Main() {
     }
 
-    /* Função inserir novo Utilizador */
+    /* Método inserir novo Utilizador */
     public static Utilizador adicionarUtilizador() {
         Scanner ler = new Scanner(System.in);
         System.out.println("Nome: ");
@@ -24,11 +24,11 @@ public class Main {
         int telemovel = ler.nextInt();
         System.out.println("NIF: ");
         int nif = ler.nextInt();
-        Utilizador utilizador = new Utilizador(nome, apelido, email, password, nif, telemovel, cidade, tipoUser);
+        Utilizador utilizador = new Utilizador(nome, apelido, email, password, nif, telemovel, cidade, tipoUser); // adiciona o utilizador ao array de utilizadores
         return utilizador;
     }
 
-    /* Função Login */
+    /* Método Login */
     public static Utilizador login(ArrayList<Utilizador> utilizadores) {
         Scanner ler = new Scanner(System.in);
         Utilizador utilizador = null;
@@ -52,6 +52,7 @@ public class Main {
         ArrayList<Reserva> reservas = new ArrayList<>();
         ArrayList<Vendas> vendas = new ArrayList<>();
 
+        // Introduzir utilizadores e carros nas respetivas arrays
         utilizadores.add( new Utilizador("Sofia", "Amorim", "ss", "ss", 123, 123, "Braga", "admin"));
         utilizadores.add( new Utilizador("Hugo", "Simoes", "hugo", "123", 12345, 926, "Barcelos", "cliente"));
         utilizadores.add( new Utilizador("Filipa", "Feerz", "ff", "ff", 231, 921, "Braga", "userManager"));
@@ -797,7 +798,7 @@ public class Main {
                                         break;
                                 }
                             } while (menu4 != 0);
-                        } else if(utilizador.getTipoUser().equals("userManager")){
+                        } else if(utilizador.getTipoUser().equals("userManager")){ // se o tipo de Utilizador for "userManager" imprime para o ecrã o ecrã seguinte
                             int menu8;
                             do {
                                 System.out.println(utilizador.ola());
@@ -815,10 +816,10 @@ public class Main {
                                 menu8 = ler.nextInt();
                                 switch (menu8){
                                     case 1:
-                                    System.out.println(utilizador.toString());
+                                    System.out.println(utilizador.toString()); // imprime para o ecrã o perfil do utilizador logado
                                     break;
                                     case 2:
-                                    System.out.println(utilizador.toString());
+                                    System.out.println(utilizador.toString()); // imprime para o ecrã o perfil do utilizador logado
 
                                     int menu5;
                                     do {
@@ -887,25 +888,25 @@ public class Main {
                                             existe = false;
                                         }
                                         for (Utilizador user : utilizadores){
-                                            if (utilizadorCriado.getNif() == user.getNif()) {
-                                                existe = true;
+                                            if (utilizadorCriado.getNif() == user.getNif()) { // compara se o nif do utilizador Criado já existe
+                                                existe = true; // se sim existe passa para true
                                             }
                                         }
-                                        if (existe) {
+                                        if (existe = true) { // se já existir dá erro
                                             System.out.println("NIF já existente!\n");
-                                        } else {
+                                        } else { // se existe for false adiciona o utilizador
                                             System.out.println("Utilizador Registado com Sucesso!\n");
                                             utilizadores.add(utilizadorCriado);
                                         }
                                         break;
                                     case 4:
                                         /* Editar Perfil de um Utilizador que não o que está Logado */
-                                        for (Utilizador user : utilizadores) {
+                                        for (Utilizador user : utilizadores) { // imprime para o ecrã os nifs existentes
                                                 System.out.println(user.nifs());
                                         }
                                         System.out.println("Escolha o Utilizador pelo seu nif: ");
                                         nif = Integer.parseInt(ler.next());
-                                        for (Utilizador use: utilizadores){
+                                        for (Utilizador use: utilizadores){ // se o nif for um que já existe imprime para o ecrã a informação desse utilizador
                                             if(use.getNif() == nif){
                                                 System.out.println(use.toString());
                                             }
