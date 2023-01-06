@@ -51,6 +51,7 @@ public class Main {
         ArrayList<Automovel> automoveis = new ArrayList<>();
         ArrayList<Reserva> reservas = new ArrayList<>();
         ArrayList<Vendas> vendas = new ArrayList<>();
+        ArrayList<Acao> acoes = new ArrayList<>();
 
         // Introduzir utilizadores e carros nas respetivas arrays
         utilizadores.add( new Utilizador("Sofia", "Amorim", "ss", "ss", 123, 123, "Braga", "admin"));
@@ -105,6 +106,7 @@ public class Main {
                     } else {
                         System.out.println("Utilizador Registado com Sucesso!\n");
                         utilizadores.add(utilizador);
+                        acoes.add(new Acao("Utilizador Registou-se "));
                     }
                     break;
                 case 2:
@@ -114,6 +116,7 @@ public class Main {
                     if (utilizador == null) {
                         System.out.println("Login Inválido!");
                     } else {
+                        acoes.add(new Acao("Utilizador Fez Login "));
                         for (Utilizador user : utilizadores){
                             if (user.getNif() == utilizador.getNif()) {
                                 indiceUtilizador = utilizadores.indexOf(user);
@@ -594,6 +597,7 @@ public class Main {
                                 switch (menu4) {
                                     case 1:
                                         System.out.println(utilizador.toString());
+                                        acoes.add(new Acao("Cliente Vizualizou o seu perfil "));
                                         break;
                                     case 2:
                                         System.out.println(utilizador.toString());
@@ -620,36 +624,42 @@ public class Main {
                                                     System.out.println("Altere o Nome: ");
                                                     nome = ler.next();
                                                     utilizador.setNome(nome);
+                                                    acoes.add(new Acao("Cliente Editou o Seu Nome:  " +nome));
                                                     break;
                                                 case 2:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere o Apelido: ");
                                                     apelido = ler.next();
                                                     utilizador.setApelido(apelido);
+                                                    acoes.add(new Acao("Cliente Editou o Seu Apelido:  " +apelido));
                                                     break;
                                                 case 3:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere o Email: ");
                                                     email = ler.next();
                                                     utilizador.setEmail(email);
+                                                    acoes.add(new Acao("Cliente Editou o Seu Email:  " +email));
                                                     break;
                                                 case 4:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere a Password: ");
                                                     password = ler.next();
                                                     utilizador.setPassword(password);
+                                                    acoes.add(new Acao("Cliente Editou a sua Password:  " +password));
                                                     break;
                                                 case 5:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere a Cidade: ");
                                                     cidade = ler.next();
                                                     utilizador.setCidade(cidade);
+                                                    acoes.add(new Acao("Cliente Editou a sua Cidade:  " +cidade));
                                                     break;
                                                 case 6:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere o Telemóvel: ");
                                                     telemovel = ler.nextInt();
                                                     utilizador.setTelemovel(telemovel);
+                                                    acoes.add(new Acao("Cliente Editou o Seu Telemóvel:  " +telemovel));
                                                     break;
                                                 default:
                                                     System.out.println("Opcao Inválida!\n\n");
@@ -662,19 +672,20 @@ public class Main {
                                     case 3:
                                         int menu6;
                                         do {
-                                            System.out.println("\n\n*****     Listar Veículos      *****");
-                                            System.out.println("\n*************************************");
-                                            System.out.println("**** 1 - Listar por marca          ****");
-                                            System.out.println("**** 2 - Listar por modelo         ****");
-                                            System.out.println("**** 3 - Listar por ano            ****");
-                                            System.out.println("**** 4 - Listar por preço          ****");
-                                            System.out.println("**** 5 - Listar todos os Veículos  ****");
-                                            System.out.println("**** 0 - Sair                      ****");
-                                            System.out.println("\n*************************************");
+                                            System.out.println("\n\n*****      Listar Veículos        *****");
+                                            System.out.println("\n****************************************");
+                                            System.out.println("**** 1 - Listar por marca            ****");
+                                            System.out.println("**** 2 - Listar por modelo           ****");
+                                            System.out.println("**** 3 - Listar por ano              ****");
+                                            System.out.println("**** 4 - Listar por preço            ****");
+                                            System.out.println("**** 5 - Listar todos os Automóveis  ****");
+                                            System.out.println("**** 0 - Sair                        ****");
+                                            System.out.println("\n****************************************");
                                             System.out.print("\nInsira a opção que deseja: ");
                                             menu6 = ler.nextInt();
                                             switch (menu6){
-                                                case 0: break;
+                                                case 0:
+                                                    break;
                                                 case 1:
                                                     System.out.println("Escolha a Marca: ");
                                                     marca = ler.next();
@@ -683,6 +694,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
+                                                    acoes.add(new Acao("Cliente Listou os Automóveis por Marca:  " +marca));
                                                     break;
                                                 case 2:
                                                     System.out.println("Escolha o Modelo: ");
@@ -692,6 +704,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
+                                                    acoes.add(new Acao("Cliente Listou os Automóveis por Modelo:  " +modelo));
                                                     break;
                                                 case 3:
                                                     System.out.println("Escolha o Ano: ");
@@ -701,6 +714,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
+                                                    acoes.add(new Acao("Cliente Listou os Automóveis por Ano:  " +ano));
                                                     break;
                                                 case 4:
                                                     System.out.println("Escolha o Preço Máximo: ");
@@ -710,6 +724,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
+                                                    acoes.add(new Acao("Cliente Listou os Automóveis por Preço:  " +preco));
                                                     break;
                                                 case 5:
                                                     for (Automovel auto : automoveis) {
@@ -717,6 +732,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
+                                                    acoes.add(new Acao("Cliente Listou Todos os Automóveis Disponíveis "));
                                                     break;
                                                 default:
                                                     System.out.println("Opcao Inválida!\n\n");
@@ -737,6 +753,7 @@ public class Main {
                                                 System.out.println(auto.toString());
                                             }
                                         }
+                                        acoes.add(new Acao("Cliente viu a informação do Automóvel com Matrícula:  " +matricula));
                                         break;
                                     case 5:
                                         /* Reservar Automóvel */
@@ -761,6 +778,7 @@ public class Main {
                                                 System.out.println("Reserva efetuada com sucesso!!");
                                             }
                                         }
+                                        acoes.add(new Acao("Cliente Reservou Automóvel com Matrícula:  " +matricula));
                                         break;
                                     case 6:
                                         int menu7;
@@ -783,12 +801,21 @@ public class Main {
                                                     for (Vendas venda : vendas){
                                                         System.out.println(venda.vendasEfetuadas());
                                                     }
+                                                    acoes.add(new Acao("Cliente consultou o seu Histórico de Compras  "));
                                                     break;
                                                 case 2:
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
                                                     reservas = utilizador.getReservas();
                                                     for (Reserva reserva : reservas) {
                                                         System.out.println(reserva.reservasEfetuadas());
+                                                    }
+                                                    acoes.add(new Acao("Cliente consultou o seu Histórico de Reservas  "));
+                                                    break;
+                                                case 3:
+                                                    System.out.println("\n\n*****      Histórico de Ações       *****");
+                                                    acoes.add(new Acao("Cliente consultou o seu Histórico de Ações  "));
+                                                    for (Acao acao: acoes){
+                                                        System.out.println(acao.getNomeAcao() + " - " + acao.getDataHora());
                                                     }
                                                     break;
                                                 default:
