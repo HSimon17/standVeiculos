@@ -3,15 +3,19 @@ public class Vendas {
     private String matricula;
     private int nif;
     enum Estado {
+        VALIDA,
+        CANCELADA,
         CONCLUIDA
     }
     private Estado estado;
 
-    public Vendas(int nif, String matricula, Estado estado) {
+    public Vendas(int nif, String matricula, String data, Estado estado) {
             this.nif= nif ;
             this.matricula = matricula;
+            this.data = data;
             this.estado = Estado.CONCLUIDA; //ao vender um veiculo o estado da reserva passa a concluido
     }
+
     public String getData() {
             return data;
     }

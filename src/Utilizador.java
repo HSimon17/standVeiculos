@@ -11,9 +11,8 @@ public class Utilizador {
     private int telemovel;
     private String tipoUser;
     private ArrayList<Reserva> reservas;
-    private ArrayList<Vendas> vendas;
 
-    public Utilizador(){
+    public Utilizador(Utilizador u1){
         this.nome = "";
         this.apelido = "";
         this.nif = 0;
@@ -23,8 +22,7 @@ public class Utilizador {
         this.tipoUser = "";
         this.email = "";
         this.password = "";
-        this.reservas = new ArrayList<>();
-        this.vendas = new ArrayList<>();
+        this.reservas = new ArrayList<Reserva>();
     }
 
     public Utilizador(String nome, String apelido, String email, String password, int nif, int telemovel, String cidade, String tipoUser) {
@@ -36,27 +34,16 @@ public class Utilizador {
         this.telemovel = telemovel;
         this.cidade = cidade;
         this.tipoUser = tipoUser;
-        this.reservas = new ArrayList<>();
-        this.vendas = new ArrayList<>();
+        this.reservas = new ArrayList<Reserva>();
     }
 
-    public void reservarAutomovel(String matricula, String data) throws AutomovelException{
+    public void reservarAutomovel(String matricula, String data){
 
         Reserva res;
 
         res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR);
 
         reservas.add(res);
-
-    }
-
-    public void registarVenda(int nif, String matricula){
-
-        Vendas ven;
-
-        ven = new Vendas(nif, matricula, Vendas.Estado.CONCLUIDA);
-
-        vendas.add(ven);
 
     }
 
@@ -103,52 +90,18 @@ public class Utilizador {
     public ArrayList<Reserva> getReservas() { return reservas; }
     public void setReservas(ArrayList<Reserva> reservas) { this.reservas = reservas; }
 
-    public void setVendas(ArrayList<Vendas> vendas) {
-        this.vendas = vendas;
-    }
-
-    public ArrayList<Vendas> getVendas() {
-        return vendas;
-    }
-
-    public String reservasFeitas(Utilizador utilizador){
+    public String reservasFeitas() {
         int i;
         String str = null;
-        for (i=0; i<reservas.size(); i++){
-            str = "\n\t\t\t NIF: " + utilizador.reservas.get(i).getNif();
-            str += "\n\t\t\t Matrícula: " + utilizador.reservas.get(i).getMatricula();
-            str += "\n\t\t\t Data da Reserva: " + utilizador.reservas.get(i).getData();
-            str += "\n\t\t\t Estado da Reserva: " +utilizador.reservas.get(i).getEstado();
+        for (i = 0; i < reservas.size(); i++) {
+            str = "\n\t\t\t NIF: " + reservas.get(i).getNif();
+            str += "\n\t\t\t Matrícula: " + reservas.get(i).getMatricula();
+            str += "\n\t\t\t Data da Reserva: " + reservas.get(i).getData();
+            str += "\n\t\t\t Estado da Reserva: " + reservas.get(i).getEstado();
             str += "\n\n";
         }
         return str;
     }
-
-//    public String reservasFeitas(Utilizador user){
- //       int i;
-   //     String str = null;
-     //   for (i=0; i<reservas.size(); i++){
-       //     str = "\n\t\t\t NIF: " +reservas.get(i).getNif();
-         //   str += "\n\t\t\t Matrícula: " +reservas.get(i).getMatricula();
-           // str += "\n\t\t\t Data da Reserva: " +reservas.get(i).getData();
-//            str += "\n\t\t\t Estado da Reserva: " +reservas.get(i).getEstado();
-  //          str += "\n\n";
-    //    }
-   //     return str;
-   // }
-
-    public String vendasFeitas(Utilizador user){
-        int i;
-        String str = null;
-        for (i=0; i<vendas.size(); i++){
-            str = "\n\t\t\t NIF: " +vendas.get(i).getNif();
-            str += "\n\t\t\t Matrícula: " +vendas.get(i).getMatricula();
-            str += "\n\t\t\t Estado da Venda: " +vendas.get(i).getEstado();
-            str += "\n\n";
-        }
-        return str;
-    }
-
     @Override
 
     public String toString(){
@@ -165,7 +118,6 @@ public class Utilizador {
         str += "\n\t\t\t NIF: " +nif;
 
         str += "\n\t\t\tReservas: ";
-
 
         for(Reserva r: reservas){
             str += "\t\t\tMatricula: " + r.getMatricula();

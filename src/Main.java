@@ -5,6 +5,7 @@ public class Main {
     public Main() {
     }
 
+    /* Função inserir novo Utilizador */
     public static Utilizador adicionarUtilizador() {
         Scanner ler = new Scanner(System.in);
         System.out.println("Nome: ");
@@ -27,6 +28,7 @@ public class Main {
         return utilizador;
     }
 
+    /* Função Login */
     public static Utilizador login(ArrayList<Utilizador> utilizadores) {
         Scanner ler = new Scanner(System.in);
         Utilizador utilizador = null;
@@ -35,7 +37,7 @@ public class Main {
         System.out.println("Password: ");
         String password = ler.nextLine();
 
-
+        /* Verifica se email e password são iguais */
         for (Utilizador user : utilizadores){
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 utilizador = user;
@@ -44,11 +46,20 @@ public class Main {
         return utilizador;
     }
 
-    public static void main(String[] args) throws AutomovelException {
+    public static void main(String[] args) {
         ArrayList<Utilizador> utilizadores = new ArrayList<>();
         ArrayList<Automovel> automoveis = new ArrayList<>();
         ArrayList<Reserva> reservas = new ArrayList<>();
-        ArrayList<Vendas> vendas = new ArrayList<>();
+
+        utilizadores.add( new Utilizador("Sofia", "Amorim", "ss", "ss", 123, 123, "Braga", "admin"));
+        utilizadores.add( new Utilizador("Hugo", "Simoes", "hugo", "123", 12345, 926, "Barcelos", "cliente"));
+        utilizadores.add( new Utilizador("Filipa", "Feerz", "ff", "ff", 231, 921, "Braga", "userManager"));
+        utilizadores.add( new Utilizador("Marta", "Barbosa", "mm", "mm", 221, 932, "Barcelos", "cliente"));
+        automoveis.add(new Automovel("TS-43-NT", "Ford", "Fiesta", "Preto", 2004, 357523, 2100));
+        automoveis.add(new Automovel("HS-17-HS", "Audi", "R8", "Branco", 2022, 20, 30000));
+        automoveis.add(new Automovel("75-ZT-71", "Citroen", "C3", "Vermelho", 2015, 75000, 14500));
+        automoveis.add(new Automovel("ET-86-WE", "Citroen", "C3", "Preto", 2013, 35565, 9010));
+        automoveis.add(new Automovel("YJ-75-SF", "Audi", "A1", "Branco", 2015, 64532, 13100));
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
@@ -75,8 +86,10 @@ public class Main {
                 case 0:
                     break;
                 case 1:
+                    /* Inserir novo Utilizador */
                     utilizador = adicionarUtilizador();
                     if (utilizador != null) {
+                        /* Verifica se o NIF já existe */
                         existe = false;
                     }
                     for (Utilizador user : utilizadores){
@@ -93,6 +106,7 @@ public class Main {
                     break;
                 case 2:
                     indiceUtilizador = -1;
+                    /* Login Utilizador */
                     utilizador = login(utilizadores);
                     if (utilizador == null) {
                         System.out.println("Login Inválido!");
@@ -102,7 +116,7 @@ public class Main {
                                 indiceUtilizador = utilizadores.indexOf(user);
                             }
                         }
-
+                        /* Menu Para cada tipo de User */
                         if (utilizador.getTipoUser().equals("admin")) {
                             int menu2;
                             do {
@@ -118,23 +132,19 @@ public class Main {
                                 System.out.println("***** 7 - Cancelar Reserva                *****");
                                 System.out.println("***** 8 - Listar Próximos Clientes        *****");
                                 System.out.println("***** 9 - Informações de um Cliente       *****");
-                                System.out.println("**** 10 - Visualizar Perfil             ****");
-                                System.out.println("**** 11 - Editar Perfil                 ****");
+                                System.out.println("**** 10 - Visualizar Perfil               *****");
+                                System.out.println("**** 11 - Editar Perfil                   *****");
                                 System.out.println("***** 0 - Logout                          *****");
                                 System.out.println("\n***********************************************");
                                 System.out.print("Insira a Opção que deseja: ");
                                 menu2 = ler.nextInt();
                                 switch (menu2) {
                                     case 1:
+                                        /* Registar Automóvel */
                                         System.out.println("\n\n**********     Registar Automóvel        **********");
 
                                         System.out.println("Insira a matrícula do automóvel: ");
                                         matricula = ler.next();
-
-                                           /* if (automoveis.contains(matricula)) {
-                                                System.out.println("Matrícula já registada! Insira uma diferente!");
-                                                continue;
-                                            } */
 
                                         System.out.println("Insira a marca do automóvel: ");
                                         marca = ler.next();
@@ -158,6 +168,7 @@ public class Main {
 
                                         for (Automovel auto : automoveis) {
                                             if (automovel.getMatricula().equals(auto.getMatricula())) {
+                                                /* Verifica se a matrícula já existe */
                                                 existe = true;
                                             }
                                         }
@@ -170,6 +181,7 @@ public class Main {
                                         break;
 
                                     case 2:
+                                        /* Editar Automóvel */
                                         for (Automovel auto : automoveis) {
                                             System.out.println(auto.matriculas());
                                         }
@@ -262,18 +274,19 @@ public class Main {
                                         }
                                         break;
                                     case 4:
+                                        /* Listar Automóveis com filtros */
                                         int menu6;
                                         do {
-                                            System.out.println("\n\n*****     Listar Veículos      *****");
-                                            System.out.println("\n*************************************");
-                                            System.out.println("**** 1 - Listar por marca          ****");
-                                            System.out.println("**** 2 - Listar por modelo         ****");
-                                            System.out.println("**** 3 - Listar por ano            ****");
-                                            System.out.println("**** 4 - Listar por preço          ****");
-                                            System.out.println("**** 5 - Listar por Estado         ****");
-                                            System.out.println("**** 6 - Listar todos os Veículos  ****");
-                                            System.out.println("**** 0 - Sair                      ****");
-                                            System.out.println("\n*************************************");
+                                            System.out.println("\n\n*****     Listar Automóvel        *****");
+                                            System.out.println("\n**************************************");
+                                            System.out.println("**** 1 - Listar por marca            ****");
+                                            System.out.println("**** 2 - Listar por modelo           ****");
+                                            System.out.println("**** 3 - Listar por ano              ****");
+                                            System.out.println("**** 4 - Listar por preço            ****");
+                                            System.out.println("**** 5 - Listar por Estado           ****");
+                                            System.out.println("**** 6 - Listar todos os Automóveis  ****");
+                                            System.out.println("**** 0 - Sair                        ****");
+                                            System.out.println("\n**************************************");
                                             System.out.print("\nInsira a opção que deseja: ");
                                             menu6 = ler.nextInt();
                                             switch (menu6){
@@ -315,51 +328,13 @@ public class Main {
                                                     }
                                                     break;
                                                 case 5:
-                                                    int menu11;
-                                                    do {
-                                                        System.out.println("\n\n*****     Listar Veículos      *****");
-                                                        System.out.println("\n*************************************");
-                                                        System.out.println("**** 1 - Listar por Disponíveis          ****");
-                                                        System.out.println("**** 2 - Listar por Reservados         ****");
-                                                        System.out.println("**** 3 - Listar por Vendidos            ****");
-                                                        System.out.println("**** 4 - Listar por Desativos          ****");
-                                                        System.out.println("**** 0 - Sair                      ****");
-                                                        System.out.println("\n*************************************");
-                                                        System.out.print("\nInsira a opção que deseja: ");
-                                                        menu11 = ler.nextInt();
-                                                        switch (menu11){
-                                                            case 0:
-                                                                break;
-                                                            case 1:
-                                                                for (Automovel auto : automoveis) {
-                                                                    if (auto.getEstado().equals(Automovel.Estado.DISPONIVEL)) {
-                                                                        System.out.println(auto.toString());
-                                                                    }
-                                                                }
-                                                                break;
-                                                            case 2:
-                                                                for (Automovel auto : automoveis) {
-                                                                    if (auto.getEstado().equals(Automovel.Estado.RESERVADO)) {
-                                                                        System.out.println(auto.toString());
-                                                                    }
-                                                                }
-                                                                break;
-                                                                case 3:
-                                                                    for (Automovel auto : automoveis) {
-                                                                        if (auto.getEstado().equals(Automovel.Estado.VENDIDO)) {
-                                                                            System.out.println(auto.toString());
-                                                                        }
-                                                                    }
-                                                                    break;
-                                                            case 4:
-                                                                for (Automovel auto : automoveis) {
-                                                                    if (auto.getEstado().equals(Automovel.Estado.DESATIVO)) {
-                                                                        System.out.println(auto.toString());
-                                                                    }
-                                                                }
-                                                                break;
-                                                        }
-                                                    } while(menu11 != 0);
+                                                    System.out.println("Escolha o Estado do Veículo: ");
+                                                    //estado = ler.nextFloat();
+                                                    //for(Automovel auto : automoveis) {
+                                                    //    if (auto.getEstado() == auto.getEstado().equals(Automovel.Estado.estado))) {
+                                                    //        System.out.println(auto.toString());
+                                                    // }
+                                                    //}
                                                     break;
                                                 case 6:
                                                     for (Automovel auto : automoveis) {
@@ -370,6 +345,7 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 5:
+                                        /* Vender Automóvel */
                                         System.out.println("\n\n*****     Registar Compra      *****");
                                         for (Utilizador user : utilizadores) {
                                             if(user.getTipoUser().equals("cliente")) {
@@ -387,33 +363,39 @@ public class Main {
                                         System.out.println("Escolha o Veículo pela sua Matrícula: ");
                                         matricula = ler.next();
 
-                                        for (Utilizador user : utilizadores){
-                                            vendas = user.getVendas();
-                                                for (Automovel auto: automoveis){
-                                                    if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL) && user.getNif() == nif) {
-                                                        user.registarVenda(nif, matricula);
-                                                        auto.setEstado(Automovel.Estado.VENDIDO);
-                                                        System.out.println("Compra efetuada com sucesso!!");
-
+                                        for (Automovel auto: automoveis){
+                                            for (Utilizador user : utilizadores){
+                                                if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL) && user.getNif() == nif) {
+                                                    System.out.println("Insira a data: ");
+                                                    data = ler.next();
+                                                    utilizador.reservarAutomovel(matricula, data);
+                                                    auto.setEstado(Automovel.Estado.VENDIDO);
+                                                    System.out.println("Compra efetuada com sucesso!!");
                                                 }
                                             }
                                         }
                                         break;
                                     case 6:
+                                        /* Validar Reservas */
                                         System.out.println("\n\n*****     Validar Reservas      *****");
 
-                                        for (Utilizador user : utilizadores) {
-                                                System.out.println(user.reservasFeitas(user));
+                                        for (Utilizador user : utilizadores){
+                                            reservas = user.getReservas();
+                                            for (Reserva reserva : reservas) {
+                                                if (reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR))
+                                                    System.out.println(reserva.reservasEfetuadas());
+                                            }
                                         }
 
-                                        System.out.println("Insira o Nif de quem quer validar a reserva: ");
-                                        nif = ler.nextInt();
+                                        System.out.println("Insira a matrícula para validar  a reserva: ");
+                                        matricula = ler.next();
 
                                         for (Utilizador user : utilizadores){
                                             reservas = user.getReservas();
                                             for (Reserva reserva: reservas){
                                                 for (Automovel auto: automoveis){
-                                                    if (reserva.getNif() == nif && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && auto.getMatricula().equals(reserva.getMatricula())){
+                                                    if (reserva.getMatricula().equals(matricula) && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && auto.getMatricula().equals(reserva.getMatricula())){
+                                                            /* Alterar estados do Automóvel e da Reserva */
                                                             auto.setEstado(Automovel.Estado.VENDIDO);
                                                             reserva.setEstado(Reserva.Estado.CONCLUIDA);
                                                             System.out.println("Reserva Validada Com Sucesso!!");
@@ -423,6 +405,7 @@ public class Main {
                                         }
                                         break;
                                     case 7:
+                                        /* Cancelar Reserva */
                                         System.out.println("\n\n*****     Cancelar Reservas      *****");
                                         for (Automovel auto : automoveis) {
                                             if (auto.getEstado().equals(Automovel.Estado.RESERVADO)){
@@ -432,29 +415,25 @@ public class Main {
                                         System.out.println("Insira a matrícula: ");
                                         matricula = ler.next();
 
-                                        for (Automovel auto: automoveis){
-                                            if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.RESERVADO)) {
-                                                auto.setEstado(Automovel.Estado.DISPONIVEL);
-                                                System.out.println("Reserva Cancelada!!");
-                                            }
-                                        }
-                                        break;
-                                    case 8:
-                                        System.out.println("Lista dos Próximos Clientes:\n\n ");
-
-                                        for(Utilizador user: utilizadores){
+                                        for (Utilizador user : utilizadores){
                                             reservas = user.getReservas();
-                                            for(Reserva reserva: reservas){
-                                                if(reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)){
-                                                    System.out.println("\nMatricula: " + reserva.getMatricula());
-                                                    System.out.println("\nNif cliente: " + reserva.getNif());
-                                                    System.out.println("\nData reserva: " + reserva.getData());
-                                                    System.out.println("\n*************************************");
+                                            for (Reserva reserva : reservas){
+                                                for (Automovel auto: automoveis){
+                                                    if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.RESERVADO)) {
+                                                        /* Alterar estados do Automóvel e da Reserva */
+                                                        auto.setEstado(Automovel.Estado.DISPONIVEL);
+                                                        reserva.setEstado(Reserva.Estado.CANCELADA);
+                                                        System.out.println("Reserva Cancelada!!");
+                                                    }
                                                 }
                                             }
                                         }
                                         break;
+                                    case 8:
+                                        /* Listar Proximos Clientes */
+                                        break;
                                     case 9:
+                                        /* Pesquisar Clientes */
                                         for (Utilizador user : utilizadores) {
                                             if(user.getTipoUser().equals("cliente")) {
                                                 System.out.println(user.nifs());
@@ -469,6 +448,7 @@ public class Main {
                                         }
                                         break;
                                     case 10:
+                                        /* Ver informacoes do Perfil */
                                         System.out.println(utilizador.toString());
                                         break;
                                     case 11:
@@ -547,7 +527,7 @@ public class Main {
                                 System.out.println("**** 1 - Visualizar Perfil             ****");
                                 System.out.println("**** 2 - Editar Perfil                 ****");
                                 System.out.println("**** 3 - Listar Veiculos               ****");
-                                System.out.println("**** 4 - Informacao de um veiculo      ****");
+                                System.out.println("**** 4 - Informacao de um Automóvel    ****");
                                 System.out.println("**** 5 - Reservar veiculo              ****");
                                 System.out.println("**** 6 - Consultar Histórico           ****");
                                 System.out.println("**** 0 - Logout                        ****");
@@ -649,7 +629,6 @@ public class Main {
                                                     break;
                                                 case 2:
                                                     System.out.println("Escolha o Modelo: ");
-                                                    // System.out.println("Escolha o Modelo: ");
                                                     modelo = ler.next();
                                                     for(Automovel auto : automoveis) {
                                                         if (auto.getModelo().equals(modelo) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)) {
@@ -686,6 +665,7 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 4:
+                                        /* Informação de um Automóvel */
                                         for(Automovel auto : automoveis){
                                             if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
                                                 System.out.println(auto.matriculas());
@@ -700,6 +680,7 @@ public class Main {
                                         }
                                         break;
                                     case 5:
+                                        /* Reservar Automóvel */
                                         System.out.println("\n\n*****       Reservar Automóvel       *****");
 
                                         for (Automovel auto : automoveis) {
@@ -710,18 +691,16 @@ public class Main {
 
                                         System.out.println("Insira a matrícula: ");
                                         matricula = ler.next();
-                                        try {
-                                            for (Automovel auto: automoveis){
-                                                if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)) {
-                                                    System.out.println("Insira a data: ");
-                                                    data = ler.next();
-                                                    utilizador.reservarAutomovel(matricula, data);
-                                                    auto.setEstado(Automovel.Estado.RESERVADO);
-                                                    System.out.println("Reserva efetuada com sucesso!!");
-                                                }
+
+                                        for (Automovel auto: automoveis){
+                                            if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)) {
+                                                System.out.println("Insira a data: ");
+                                                data = ler.next();
+                                                utilizador.reservarAutomovel(matricula, data);
+                                                /* Alterar estados do Automóvel */
+                                                auto.setEstado(Automovel.Estado.RESERVADO);
+                                                System.out.println("Reserva efetuada com sucesso!!");
                                             }
-                                        } catch (AutomovelException e) {
-                                            e.printStackTrace();
                                         }
                                         break;
                                     case 6:
@@ -741,26 +720,21 @@ public class Main {
                                                     break;
                                                 case 1:
                                                     System.out.println("\n\n*****      Histórico de Compras      *****");
-                                                        for (Automovel auto: automoveis){
-                                                            if(auto.getEstado().equals(Automovel.Estado.VENDIDO)){
-                                                                System.out.println(utilizador.getVendas());
+                                                    reservas = utilizador.getReservas();
+                                                    for (Automovel auto : automoveis) {
+                                                        for (Reserva reserva : reservas) {
+                                                            if (auto.getEstado().equals(Automovel.Estado.VENDIDO) && reserva.getEstado().equals(Reserva.Estado.CONCLUIDA)) {
+                                                                System.out.println(reserva.reservasEfetuadas());
                                                             }
                                                         }
+                                                    }
                                                     break;
                                                 case 2:
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
-                                                        for (Automovel auto: automoveis){
-                                                            utilizador.getNif();
-                                                            for(Utilizador user : utilizadores) {
-                                                                if (auto.getEstado().equals(Automovel.Estado.RESERVADO) && utilizador.getNif() == user.getNif()) {
-                                                                    System.out.println(utilizador.getReservas());
-                                                                    System.out.println(utilizador.getNif());
-                                                                }
-                                                            }
-                                                        }
-                                                    break;
-                                                case 3:
-                                                    System.out.println("\n\n*****      Histórico de Ações       *****");
+                                                    reservas = utilizador.getReservas();
+                                                    for (Reserva reserva : reservas) {
+                                                        System.out.println(reserva.reservasEfetuadas());
+                                                    }
                                                     break;
                                             }
                                         } while (menu7 != 0);
@@ -851,6 +825,7 @@ public class Main {
                                     } while (menu5 != 0);
                                     break;
                                     case 3:
+                                        /* Criar um Novo Utilizador */
                                         utilizadorCriado = adicionarUtilizador();
                                         if (utilizadorCriado != null) {
                                             existe = false;
@@ -868,6 +843,7 @@ public class Main {
                                         }
                                         break;
                                     case 4:
+                                        /* Editar Perfil de um Utilizador que não o que está Logado */
                                         for (Utilizador user : utilizadores) {
                                                 System.out.println(user.nifs());
                                         }
@@ -1013,6 +989,7 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 6:
+                                        /* Listar utilizadores com filtros */
                                     int menu9;
                                     do {
                                         System.out.println("\n\n*****     Listar Utilizadores          *****");
