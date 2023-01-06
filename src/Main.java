@@ -52,10 +52,14 @@ public class Main {
         ArrayList<Reserva> reservas = new ArrayList<>();
 
         utilizadores.add( new Utilizador("Sofia", "Amorim", "ss", "ss", 123, 123, "Braga", "admin"));
-        utilizadores.add( new Utilizador("Hugo", "Simoes", "hugo", "123", 12345, 123, "Barcelos", "cliente"));
+        utilizadores.add( new Utilizador("Hugo", "Simoes", "hugo", "123", 12345, 926, "Barcelos", "cliente"));
+        utilizadores.add( new Utilizador("Filipa", "Feerz", "ff", "ff", 231, 921, "Braga", "userManager"));
+        utilizadores.add( new Utilizador("Marta", "Barbosa", "mm", "mm", 221, 932, "Barcelos", "cliente"));
         automoveis.add(new Automovel("TS-43-NT", "Ford", "Fiesta", "Preto", 2004, 357523, 2100));
-        automoveis.add(new Automovel("HS-17-HS", "Audi", "R8", "Brnaco", 2022, 20, 300000));
+        automoveis.add(new Automovel("HS-17-HS", "Audi", "R8", "Branco", 2022, 20, 30000));
         automoveis.add(new Automovel("75-ZT-71", "Citroen", "C3", "Vermelho", 2015, 75000, 14500));
+        automoveis.add(new Automovel("ET-86-WE", "Citroen", "C3", "Preto", 2013, 35565, 9010));
+        automoveis.add(new Automovel("YJ-75-SF", "Audi", "A1", "Branco", 2015, 64532, 13100));
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
