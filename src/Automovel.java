@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 
+// Classe dos Automóveis
 public class Automovel {
     enum Estado {
         DISPONIVEL,
@@ -21,6 +22,7 @@ public class Automovel {
     private HashMap<Object, Automovel> automovel;
 
 
+    //Método para criar um automóvel onde todas as variáveis são obrigatórias
     public Automovel(String matricula, String marca, String modelo, String cor, int ano, float kms, float preco) {
         this.matricula = matricula;
         this.marca = marca;
@@ -29,18 +31,7 @@ public class Automovel {
         this.ano = ano;
         this.kms = kms;
         this.preco = preco;
-        this.estado = Estado.DISPONIVEL;
-    }
-
-    public Automovel(){
-        this.matricula="";
-        this.marca="";
-        this.modelo="";
-        this.cor="";
-        this.ano=0;
-        this.kms=0;
-        this.preco=0;
-        this.estado=Estado.DISPONIVEL;
+        this.estado = Estado.DISPONIVEL; // quando se cria um automóvel o seu estado é automaticamente Disponivel
     }
 
     public String getMatricula() {
@@ -98,6 +89,7 @@ public class Automovel {
         this.automovel = automovel;
     }
 
+    //Método que imprime para o ecrã as informações dos automóveis
     @Override
     public String toString(){
         System.out.println("\n\n**********     Informações do Automóvel      **********");
@@ -113,6 +105,7 @@ public class Automovel {
 
     }
 
+    //Método que lista as matriculas dos automóveis
     public String matriculas(){
         String str = "\n\tMatricula: " +matricula;
 

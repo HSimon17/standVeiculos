@@ -1,5 +1,6 @@
 import java.util.Date;
 
+//Classe das Reservas
 public class Reserva {
     private String data; // mudar para date
     private String matricula;
@@ -11,11 +12,12 @@ public class Reserva {
     }
     private Estado estado;
 
+    //Metodo que cria uma reserva
     public Reserva(int nif, String matricula, String data, Estado estado) {
             this.nif = nif;
             this.matricula = matricula;
             this.data = data;
-            this.estado = Estado.POR_VALIDAR;
+            this.estado = Estado.POR_VALIDAR; // ao criar uma reserva o seu estado passa automaticamente para POR_VALIDAR
     }
 
     public String getData() {
@@ -43,7 +45,7 @@ public class Reserva {
         return estado;
     }
 
-
+    //Método que imprime para o ecrã as informações de uma reserva
     public String reservasEfetuadas(){
 
         String str = "\n\t\t\t NIF: " +nif;

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+//Classe dos utilizadores
 public class Utilizador {
     private String nome;
     private String apelido;
@@ -13,20 +14,7 @@ public class Utilizador {
     private ArrayList<Reserva> reservas;
     private ArrayList<Vendas> vendas;
 
-    public Utilizador(Utilizador u1){
-        this.nome = "";
-        this.apelido = "";
-        this.nif = 0;
-        this.login = true;
-        this.cidade = "";
-        this.telemovel = 0;
-        this.tipoUser = "";
-        this.email = "";
-        this.password = "";
-        this.reservas = new ArrayList<Reserva>();
-        this.vendas = new ArrayList<Vendas>();
-    }
-
+    // Método que cria um utilizador onde toas as variáveis são obrigatórias
     public Utilizador(String nome, String apelido, String email, String password, int nif, int telemovel, String cidade, String tipoUser) {
         this.nome = nome;
         this.apelido = apelido;
@@ -36,17 +24,18 @@ public class Utilizador {
         this.telemovel = telemovel;
         this.cidade = cidade;
         this.tipoUser = tipoUser;
-        this.reservas = new ArrayList<Reserva>();
-        this.vendas = new ArrayList<Vendas>();
+        this.reservas = new ArrayList<>(); // linha que adiciona reservas ao utilizador
+        this.vendas = new ArrayList<>(); // linha que adiciona vendas ao utilizador
     }
 
+    // Método que reserva um automóvel
     public void reservarAutomovel(String matricula, String data){
 
         Reserva res;
 
-        res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR);
+        res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR); // o nif da reserva é automaticamente o nif do utilizador logado
 
-        reservas.add(res);
+        reservas.add(res); // adicionar o automovel ao array das reservas
 
     }
 
@@ -119,6 +108,7 @@ public class Utilizador {
     }
     @Override
 
+    //Método que imprime para o ecrã as informações do perfil + as reservas e vendas efetuadas pelo utilizador
     public String toString(){
 
         System.out.println("\n\n*****       Informações do Perfil          *****");
@@ -153,12 +143,14 @@ public class Utilizador {
         return str;
     }
 
+    // Método que dá as boas vindas ao Utilizador
     public String ola(){
         String str = "Olá "+nome;
 
         return str;
     }
 
+    // Método que lista todos os nifs existentes
     public String nifs(){
         String str = "\n\tNIF: " +nif;
 

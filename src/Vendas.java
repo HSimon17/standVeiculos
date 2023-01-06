@@ -1,3 +1,4 @@
+//Classe das Vendas
 public class Vendas {
     private String data; // mudar para date
     private String matricula;
@@ -9,6 +10,7 @@ public class Vendas {
     }
     private Estado estado;
 
+    //Metodo que cria uma venda
     public Vendas(int nif, String matricula, String data, Estado estado) {
             this.nif= nif ;
             this.matricula = matricula;
@@ -41,6 +43,7 @@ public class Vendas {
         return estado;
     }
 
+    //Método que imprime para o ecrã as informações de uma venda
     public String vendasEfetuadas(){
 
         String str = "\n\t\t\t NIF: " +nif;

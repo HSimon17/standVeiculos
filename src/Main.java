@@ -61,6 +61,7 @@ public class Main {
         automoveis.add(new Automovel("75-ZT-71", "Citroen", "C3", "Vermelho", 2015, 75000, 14500));
         automoveis.add(new Automovel("ET-86-WE", "Citroen", "C3", "Preto", 2013, 35565, 9010));
         automoveis.add(new Automovel("YJ-75-SF", "Audi", "A1", "Branco", 2015, 64532, 13100));
+        automoveis.add(new Automovel("65-ZH-02", "Smart", "44", "Preto", 2021, 53232, 9500));
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
