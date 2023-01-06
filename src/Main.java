@@ -52,7 +52,10 @@ public class Main {
         ArrayList<Reserva> reservas = new ArrayList<>();
 
         utilizadores.add( new Utilizador("Sofia", "Amorim", "ss", "ss", 123, 123, "Braga", "admin"));
+        utilizadores.add( new Utilizador("Hugo", "Simoes", "hugo", "123", 12345, 123, "Barcelos", "cliente"));
         automoveis.add(new Automovel("TS-43-NT", "Ford", "Fiesta", "Preto", 2004, 357523, 2100));
+        automoveis.add(new Automovel("HS-17-HS", "Audi", "R8", "Brnaco", 2022, 20, 300000));
+        automoveis.add(new Automovel("75-ZT-71", "Citroen", "C3", "Vermelho", 2015, 75000, 14500));
 
         Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
@@ -125,8 +128,8 @@ public class Main {
                                 System.out.println("***** 7 - Cancelar Reserva                *****");
                                 System.out.println("***** 8 - Listar Próximos Clientes        *****");
                                 System.out.println("***** 9 - Informações de um Cliente       *****");
-                                System.out.println("**** 10 - Visualizar Perfil             ****");
-                                System.out.println("**** 11 - Editar Perfil                 ****");
+                                System.out.println("**** 10 - Visualizar Perfil               *****");
+                                System.out.println("**** 11 - Editar Perfil                   *****");
                                 System.out.println("***** 0 - Logout                          *****");
                                 System.out.println("\n***********************************************");
                                 System.out.print("Insira a Opção que deseja: ");
@@ -372,19 +375,22 @@ public class Main {
                                         /* Validar Reservas */
                                         System.out.println("\n\n*****     Validar Reservas      *****");
 
-                                        reservas = utilizador.getReservas();
-                                        for (Reserva reserva : reservas) {
-                                                System.out.println(reserva.reservasEfetuadas());
+                                        for (Utilizador user : utilizadores){
+                                            reservas = user.getReservas();
+                                            for (Reserva reserva : reservas) {
+                                                if (reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR))
+                                                    System.out.println(reserva.reservasEfetuadas());
+                                            }
                                         }
 
-                                        System.out.println("Insira o Nif de quem quer validar a reserva: ");
-                                        nif = ler.nextInt();
+                                        System.out.println("Insira a matrícula para validar  a reserva: ");
+                                        matricula = ler.next();
 
                                         for (Utilizador user : utilizadores){
                                             reservas = user.getReservas();
                                             for (Reserva reserva: reservas){
                                                 for (Automovel auto: automoveis){
-                                                    if (reserva.getNif() == nif && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && auto.getMatricula().equals(reserva.getMatricula())){
+                                                    if (reserva.getMatricula().equals(matricula) && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && auto.getMatricula().equals(reserva.getMatricula())){
                                                             /* Alterar estados do Automóvel e da Reserva */
                                                             auto.setEstado(Automovel.Estado.VENDIDO);
                                                             reserva.setEstado(Reserva.Estado.CONCLUIDA);
