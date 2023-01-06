@@ -50,6 +50,7 @@ public class Main {
         ArrayList<Utilizador> utilizadores = new ArrayList<>();
         ArrayList<Automovel> automoveis = new ArrayList<>();
         ArrayList<Reserva> reservas = new ArrayList<>();
+        ArrayList<Vendas> vendas = new ArrayList<>();
 
         utilizadores.add( new Utilizador("Sofia", "Amorim", "ss", "ss", 123, 123, "Braga", "admin"));
         utilizadores.add( new Utilizador("Hugo", "Simoes", "hugo", "123", 12345, 926, "Barcelos", "cliente"));
@@ -406,7 +407,7 @@ public class Main {
                                                 if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL) && user.getNif() == nif) {
                                                     System.out.println("Insira a data: ");
                                                     data = ler.next();
-                                                    utilizador.reservarAutomovel(matricula, data);
+                                                    user.venderAutomovel(nif, matricula, data);
                                                     auto.setEstado(Automovel.Estado.VENDIDO);
                                                     System.out.println("Compra efetuada com sucesso!!");
                                                 }
@@ -770,13 +771,9 @@ public class Main {
                                                     break;
                                                 case 1:
                                                     System.out.println("\n\n*****      Histórico de Compras      *****");
-                                                    reservas = utilizador.getReservas();
-                                                    for (Automovel auto : automoveis) {
-                                                        for (Reserva reserva : reservas) {
-                                                            if (auto.getEstado().equals(Automovel.Estado.VENDIDO) && reserva.getEstado().equals(Reserva.Estado.CONCLUIDA)) {
-                                                                System.out.println(reserva.reservasEfetuadas());
-                                                            }
-                                                        }
+                                                    vendas = utilizador.getVendas();
+                                                    for (Vendas venda : vendas){
+                                                        System.out.println(venda.vendasEfetuadas());
                                                     }
                                                     break;
                                                 case 2:
@@ -1097,7 +1094,10 @@ public class Main {
                                         }
                                     }while(menu9 != 0);
                                     break;
-                                    case 0: break;
+                                    case 0:
+                                        break;
+                                    default:
+                                        System.out.println("Opcao Inválida!\n\n");
                                 }
                             }while (menu8 != 0);
 
