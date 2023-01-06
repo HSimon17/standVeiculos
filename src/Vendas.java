@@ -13,7 +13,7 @@ public class Vendas {
             this.nif= nif ;
             this.matricula = matricula;
             this.data = data;
-            this.estado = Estado.CONCLUIDA; //ao vender um veiculo o estado da reserva passa a concluido
+            this.estado = Estado.CONCLUIDA;
     }
 
     public String getData() {
@@ -39,5 +39,15 @@ public class Vendas {
     }
     public Estado getEstado() {
         return estado;
+    }
+
+    public String vendasEfetuadas(){
+
+        String str = "\n\t\t\t NIF: " +nif;
+        str += "\n\t\t\t Data: " +data;
+        str += "\n\t\t\t Matrícula: " +matricula;
+        str += "\n\t\t\t Estado da Reserva: " +estado;
+
+        return str;
     }
 }

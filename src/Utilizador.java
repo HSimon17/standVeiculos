@@ -11,6 +11,7 @@ public class Utilizador {
     private int telemovel;
     private String tipoUser;
     private ArrayList<Reserva> reservas;
+    private ArrayList<Vendas> vendas;
 
     public Utilizador(Utilizador u1){
         this.nome = "";
@@ -23,6 +24,7 @@ public class Utilizador {
         this.email = "";
         this.password = "";
         this.reservas = new ArrayList<Reserva>();
+        this.vendas = new ArrayList<Vendas>();
     }
 
     public Utilizador(String nome, String apelido, String email, String password, int nif, int telemovel, String cidade, String tipoUser) {
@@ -35,6 +37,7 @@ public class Utilizador {
         this.cidade = cidade;
         this.tipoUser = tipoUser;
         this.reservas = new ArrayList<Reserva>();
+        this.vendas = new ArrayList<Vendas>();
     }
 
     public void reservarAutomovel(String matricula, String data){
@@ -44,6 +47,16 @@ public class Utilizador {
         res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR);
 
         reservas.add(res);
+
+    }
+
+    public void venderAutomovel(int nif, String matricula, String data){
+
+        Vendas venda;
+
+        venda = new Vendas(nif, matricula, data, Vendas.Estado.CONCLUIDA);
+
+        vendas.add(venda);
 
     }
 
@@ -89,6 +102,8 @@ public class Utilizador {
     }
     public ArrayList<Reserva> getReservas() { return reservas; }
     public void setReservas(ArrayList<Reserva> reservas) { this.reservas = reservas; }
+    public ArrayList<Vendas> getVendas() { return vendas; }
+    public void setVendas(ArrayList<Vendas> vendas) { this.vendas = vendas; }
 
     public String reservasFeitas() {
         int i;
@@ -123,6 +138,15 @@ public class Utilizador {
             str += "\t\t\tMatricula: " + r.getMatricula();
             str += "\t\t\tData reserva: " + r.getData();
             str += "\t\t\tEstado da reserva: " + r.getEstado();
+            str += "\n\n";
+        }
+
+        str += "\n\t\t\tVendas: ";
+
+        for(Vendas venda: vendas){
+            str += "\t\t\tMatricula: " + venda.getMatricula();
+            str += "\t\t\tData Compra: " + venda.getData();
+            str += "\t\t\tEstado da Compra: " + venda.getEstado();
             str += "\n\n";
         }
 
