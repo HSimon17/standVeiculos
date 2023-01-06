@@ -430,7 +430,19 @@ public class Main {
                                         }
                                         break;
                                     case 8:
-                                        /* Listar Proximos Clientes */
+                                        System.out.println("Lista dos Próximos Clientes:\n\n ");
+
+                                        for(Utilizador user: utilizadores){
+                                            reservas = user.getReservas();
+                                            for(Reserva reserva: reservas){
+                                                if(reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)){
+                                                    System.out.println("\nMatricula: " + reserva.getMatricula());
+                                                    System.out.println("\nNif cliente: " + reserva.getNif());
+                                                    System.out.println("\nData reserva: " + reserva.getData());
+                                                    System.out.println("\n*************************************");
+                                                }
+                                            }
+                                        }
                                         break;
                                     case 9:
                                         /* Pesquisar Clientes */
