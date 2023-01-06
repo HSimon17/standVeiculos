@@ -12,6 +12,7 @@ public class Reserva {
     }
     private Estado estado;
 
+    //Método para adicionar uma nova reserva em que todas as variáveis são obrigatórios
     public Reserva(int nif, String matricula, String data, Estado estado) {
             this.nif = nif;
             this.matricula = matricula;
@@ -44,7 +45,7 @@ public class Reserva {
         return estado;
     }
 
-
+// Método que imprime para o ecrã a informação das reservas feitas
     public String reservasEfetuadas(){
 
         String str = "\n\t\t\t NIF: " +nif;

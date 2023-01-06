@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+//Classe dos Utilizadores
 public class Utilizador {
     private String nome;
     private String apelido;
@@ -12,19 +13,7 @@ public class Utilizador {
     private String tipoUser;
     private ArrayList<Reserva> reservas;
 
-    public Utilizador(Utilizador u1){
-        this.nome = "";
-        this.apelido = "";
-        this.nif = 0;
-        this.login = true;
-        this.cidade = "";
-        this.telemovel = 0;
-        this.tipoUser = "";
-        this.email = "";
-        this.password = "";
-        this.reservas = new ArrayList<Reserva>();
-    }
-
+    //Método para adicionar um utilizador em que todas as variáveis são obrigatórias
     public Utilizador(String nome, String apelido, String email, String password, int nif, int telemovel, String cidade, String tipoUser) {
         this.nome = nome;
         this.apelido = apelido;
@@ -34,14 +23,15 @@ public class Utilizador {
         this.telemovel = telemovel;
         this.cidade = cidade;
         this.tipoUser = tipoUser;
-        this.reservas = new ArrayList<Reserva>();
+        this.reservas = new ArrayList<>(); //linha que adiciona uma lista das reservas ao utilizador
     }
 
+    //Método que cria uma reserva de um automóvel
     public void reservarAutomovel(String matricula, String data){
 
         Reserva res;
 
-        res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR);
+        res = new Reserva(this.nif, matricula, data, Reserva.Estado.POR_VALIDAR); // o nif é o do utilizador logado, dpois só adiciona a matrícula e a data e o estado passa automaticamente a POR_VALIDAR
 
         reservas.add(res);
 
