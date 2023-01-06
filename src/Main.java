@@ -328,13 +328,51 @@ public class Main {
                                                     }
                                                     break;
                                                 case 5:
-                                                    System.out.println("Escolha o Estado do Veículo: ");
-                                                    //estado = ler.nextFloat();
-                                                    //for(Automovel auto : automoveis) {
-                                                    //    if (auto.getEstado() == auto.getEstado().equals(Automovel.Estado.estado))) {
-                                                    //        System.out.println(auto.toString());
-                                                    // }
-                                                    //}
+                                                    int menu11;
+                                                    do {
+                                                        System.out.println("\n\n*****     Listar Veículos      *****");
+                                                        System.out.println("\n*************************************");
+                                                        System.out.println("**** 1 - Listar por Disponíveis          ****");
+                                                        System.out.println("**** 2 - Listar por Reservados         ****");
+                                                        System.out.println("**** 3 - Listar por Vendidos            ****");
+                                                        System.out.println("**** 4 - Listar por Desativos          ****");
+                                                        System.out.println("**** 0 - Sair                      ****");
+                                                        System.out.println("\n*************************************");
+                                                        System.out.print("\nInsira a opção que deseja: ");
+                                                        menu11 = ler.nextInt();
+                                                        switch (menu11){
+                                                            case 0:
+                                                                break;
+                                                            case 1:
+                                                                for (Automovel auto : automoveis) {
+                                                                    if (auto.getEstado().equals(Automovel.Estado.DISPONIVEL)) {
+                                                                        System.out.println(auto.toString());
+                                                                    }
+                                                                }
+                                                                break;
+                                                            case 2:
+                                                                for (Automovel auto : automoveis) {
+                                                                    if (auto.getEstado().equals(Automovel.Estado.RESERVADO)) {
+                                                                        System.out.println(auto.toString());
+                                                                    }
+                                                                }
+                                                                break;
+                                                            case 3:
+                                                                for (Automovel auto : automoveis) {
+                                                                    if (auto.getEstado().equals(Automovel.Estado.VENDIDO)) {
+                                                                        System.out.println(auto.toString());
+                                                                    }
+                                                                }
+                                                                break;
+                                                            case 4:
+                                                                for (Automovel auto : automoveis) {
+                                                                    if (auto.getEstado().equals(Automovel.Estado.DESATIVO)) {
+                                                                        System.out.println(auto.toString());
+                                                                    }
+                                                                }
+                                                                break;
+                                                        }
+                                                    } while(menu11 != 0);
                                                     break;
                                                 case 6:
                                                     for (Automovel auto : automoveis) {
