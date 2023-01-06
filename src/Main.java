@@ -338,6 +338,8 @@ public class Main {
                                                         System.out.println(auto.toString());
                                                     }
                                                     break;
+                                                default:
+                                                    System.out.println("Opcao Inválida!\n\n");
                                             }
                                         } while(menu6 != 0);
                                         break;
@@ -513,6 +515,8 @@ public class Main {
                                         break;
                                     case 0:
                                         break;
+                                    default:
+                                        System.out.println("Opcao Inválida!\n\n");
                                 }
                             } while (menu2 != 0);
                         } else if (utilizador.getTipoUser().equals("cliente")) {
@@ -658,6 +662,8 @@ public class Main {
                                                         }
                                                     }
                                                     break;
+                                                default:
+                                                    System.out.println("Opcao Inválida!\n\n");
                                             }
                                         } while(menu6 != 0);
                                         break;
@@ -729,6 +735,8 @@ public class Main {
                                                         System.out.println(reserva.reservasEfetuadas());
                                                     }
                                                     break;
+                                                default:
+                                                    System.out.println("Opcao Inválida!\n\n");
                                             }
                                         } while (menu7 != 0);
                                         break;
@@ -978,6 +986,8 @@ public class Main {
                                                         System.out.println(auto.toString());
                                                     }
                                                     break;
+                                                default:
+                                                    System.out.println("Opcao Inválida!\n\n");
                                             }
                                         } while(menu6 != 0);
                                         break;
@@ -1037,6 +1047,8 @@ public class Main {
                                                 break;
                                             case 0:
                                                 break;
+                                            default:
+                                                System.out.println("Opcao Inválida!\n\n");
                                         }
                                     }while(menu9 != 0);
                                     break;
