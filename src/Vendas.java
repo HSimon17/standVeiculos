@@ -49,7 +49,7 @@ public class Vendas {
         String str = "\n\t\t\t NIF: " +nif;
         str += "\n\t\t\t Data: " +data;
         str += "\n\t\t\t Matrícula: " +matricula;
-        str += "\n\t\t\t Estado da Reserva: " +estado;
+        str += "\n\t\t\t Estado da Compra: " +estado;
 
         return str;
     }
