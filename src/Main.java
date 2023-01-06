@@ -332,14 +332,14 @@ public class Main {
                                                 case 5:
                                                     int menu11;
                                                     do {
-                                                        System.out.println("\n\n*****     Listar Veículos      *****");
-                                                        System.out.println("\n*************************************");
-                                                        System.out.println("**** 1 - Listar por Disponíveis          ****");
-                                                        System.out.println("**** 2 - Listar por Reservados         ****");
-                                                        System.out.println("**** 3 - Listar por Vendidos            ****");
-                                                        System.out.println("**** 4 - Listar por Desativos          ****");
-                                                        System.out.println("**** 0 - Sair                      ****");
-                                                        System.out.println("\n*************************************");
+                                                        System.out.println("\n\n*****     Listar Veículos      *******");
+                                                        System.out.println("\n***************************************");
+                                                        System.out.println("**** 1 - Listar por Disponíveis     ****");
+                                                        System.out.println("**** 2 - Listar por Reservados      ****");
+                                                        System.out.println("**** 3 - Listar por Vendidos        ****");
+                                                        System.out.println("**** 4 - Listar por Desativos       ****");
+                                                        System.out.println("**** 0 - Sair                       ****");
+                                                        System.out.println("\n***************************************");
                                                         System.out.print("\nInsira a opção que deseja: ");
                                                         menu11 = ler.nextInt();
                                                         switch (menu11){
