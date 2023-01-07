@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 //Classe dos utilizadores
 public class Utilizador {
@@ -12,6 +13,7 @@ public class Utilizador {
     private String tipoUser;
     private ArrayList<Reserva> reservas;
     private ArrayList<Vendas> vendas;
+    private ArrayList<Acao> acoes;
 
     // Construtor que cria um utilizador onde toas as variáveis são obrigatórias
     public Utilizador(String nome, String apelido, String email, String password, int nif, int telemovel, String cidade, String tipoUser) {
@@ -25,6 +27,7 @@ public class Utilizador {
         this.tipoUser = tipoUser;
         this.reservas = new ArrayList<>(); // linha que adiciona reservas ao utilizador
         this.vendas = new ArrayList<>(); // linha que adiciona vendas ao utilizador
+        this.acoes = new ArrayList<>();  // linha que adiciona ações ao utilizador
     }
 
     // Método que reserva um automóvel
@@ -46,6 +49,16 @@ public class Utilizador {
         venda = new Vendas(nif, matricula, data, Vendas.Estado.CONCLUIDA); // o estado da venda passa automaticamente a Concluido o nif é o que o admin selecionar
 
         vendas.add(venda); //adiciona a venda ao array das vendas
+
+    }
+
+    public void acoesRealizadas(int nif, String nomeAcao){
+
+        Acao acao;
+
+        acao = new Acao(nomeAcao, nif); // Adicionar nova Ação com nomeAcao e nif
+
+        acoes.add(acao); //adiciona a ação ao array das acoes
 
     }
 
@@ -89,6 +102,8 @@ public class Utilizador {
     public void setReservas(ArrayList<Reserva> reservas) { this.reservas = reservas; }
     public ArrayList<Vendas> getVendas() { return vendas; }
     public void setVendas(ArrayList<Vendas> vendas) { this.vendas = vendas; }
+    public ArrayList<Acao> getAcoes() { return acoes; }
+    public void setAcoes(ArrayList<Acao> acoes) { this.acoes = acoes; }
 
     @Override
 

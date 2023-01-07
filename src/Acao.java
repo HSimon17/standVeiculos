@@ -1,11 +1,15 @@
 import java.util.Date;
 
+// Classe das Ações
 public class Acao {
 
     private String nomeAcao;
-    private Date dataHora; // passar para data
+    private Date dataHora;
+    private int nif;
 
-    public Acao (String nomeAcao){
+    // Construtor que cria uma ação
+    public Acao (String nomeAcao, int nif){
+        this.nif = nif;
         this.nomeAcao = nomeAcao;
         this.dataHora = new Date();
     }
@@ -26,12 +30,8 @@ public class Acao {
         this.dataHora = dataHora;
     }
 
-   /* public String acoesEfetuadas(){
+    public int getNif() { return nif; }
 
-        String str = "\n\t\t\t Ação: " +nomeAcao;
-        str += "\n\t\t\t Data: " +dataHora;
-
-        return str;
-    } */
+    public void setNif(int nif) { this.nif = nif; }
 
 }

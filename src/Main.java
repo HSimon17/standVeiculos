@@ -65,7 +65,7 @@ public class Main {
         automoveis.add(new Automovel("YJ-75-SF", "Audi", "A1", "Branco", 2015, 64532, 13100));
         automoveis.add(new Automovel("65-ZH-02", "Smart", "44", "Preto", 2021, 53232, 9500));
 
-        Utilizador utilizador, utilizadorNovo = null, utilizadorCriado;
+        Utilizador utilizador = null, utilizadorNovo = null, utilizadorCriado;
         Automovel automovel = null, automovelNovo = null;
 
         int nif, telemovel,  ano, indiceUtilizador, indiceAutomovel;
@@ -106,7 +106,7 @@ public class Main {
                     } else {
                         System.out.println("Utilizador Registado com Sucesso!\n");
                         utilizadores.add(utilizador);
-                        acoes.add(new Acao("Utilizador Registou-se "));
+                        utilizador.acoesRealizadas(utilizador.getNif(), "Utilizador Registou-se ");
                     }
                     break;
                 case 2:
@@ -116,7 +116,7 @@ public class Main {
                     if (utilizador == null) {
                         System.out.println("Login Inválido!");
                     } else {
-                        acoes.add(new Acao("Utilizador Fez Login "));
+                        utilizador.acoesRealizadas(utilizador.getNif(), "Utilizador Fez Login ");
                         for (Utilizador user : utilizadores){
                             if (user.getNif() == utilizador.getNif()) {
                                 indiceUtilizador = utilizadores.indexOf(user);
@@ -140,6 +140,7 @@ public class Main {
                                 System.out.println("***** 9 - Informações de um Cliente       *****");
                                 System.out.println("**** 10 - Visualizar Perfil               *****");
                                 System.out.println("**** 11 - Editar Perfil                   *****");
+                                System.out.println("**** 12 - Histórico de Ações              *****");
                                 System.out.println("***** 0 - Logout                          *****");
                                 System.out.println("\n***********************************************");
                                 System.out.print("Insira a Opção que deseja: ");
@@ -572,6 +573,15 @@ public class Main {
                                             utilizador = utilizadorNovo;
                                         } while (menu5 != 0);
                                         break;
+                                    case 12:
+                                        System.out.println("*****        Histórico de Ações          *****");
+                                        for (Utilizador user : utilizadores){
+                                            acoes = user.getAcoes();
+                                            for (Acao acao : acoes){
+                                                System.out.println("NIF: " + acao.getNif() + " - " + acao.getNomeAcao() + " - " + acao.getDataHora());
+                                            }
+                                        }
+                                        break;
                                     case 0:
                                         break;
                                     default:
@@ -595,9 +605,12 @@ public class Main {
                                 System.out.print("Insira a Opção que deseja: ");
                                 menu4 = ler.nextInt();
                                 switch (menu4) {
+                                    case 0:
+                                        utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Fez Logout ");
+                                        break;
                                     case 1:
                                         System.out.println(utilizador.toString());
-                                        acoes.add(new Acao("Cliente Vizualizou o seu perfil "));
+                                        utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Visualizou o seu Perfil ");
                                         break;
                                     case 2:
                                         System.out.println(utilizador.toString());
@@ -624,47 +637,46 @@ public class Main {
                                                     System.out.println("Altere o Nome: ");
                                                     nome = ler.next();
                                                     utilizador.setNome(nome);
-                                                    acoes.add(new Acao("Cliente Editou o Seu Nome:  " +nome));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou o seu Nome: " +nome);
                                                     break;
                                                 case 2:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere o Apelido: ");
                                                     apelido = ler.next();
                                                     utilizador.setApelido(apelido);
-                                                    acoes.add(new Acao("Cliente Editou o Seu Apelido:  " +apelido));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou o seu Apelido: " +apelido);
                                                     break;
                                                 case 3:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere o Email: ");
                                                     email = ler.next();
                                                     utilizador.setEmail(email);
-                                                    acoes.add(new Acao("Cliente Editou o Seu Email:  " +email));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou o seu Email: " +email);
                                                     break;
                                                 case 4:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere a Password: ");
                                                     password = ler.next();
                                                     utilizador.setPassword(password);
-                                                    acoes.add(new Acao("Cliente Editou a sua Password:  " +password));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou a sua Password: " +password);
                                                     break;
                                                 case 5:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere a Cidade: ");
                                                     cidade = ler.next();
                                                     utilizador.setCidade(cidade);
-                                                    acoes.add(new Acao("Cliente Editou a sua Cidade:  " +cidade));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou a sua Cidade: " +cidade);
                                                     break;
                                                 case 6:
                                                     utilizadorNovo = utilizador;
                                                     System.out.println("Altere o Telemóvel: ");
                                                     telemovel = ler.nextInt();
                                                     utilizador.setTelemovel(telemovel);
-                                                    acoes.add(new Acao("Cliente Editou o Seu Telemóvel:  " +telemovel));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou o seu Telemóvel: " +telemovel);
                                                     break;
                                                 default:
                                                     System.out.println("Opcao Inválida!\n\n");
                                             }
-
                                             utilizadores.set(indiceUtilizador, utilizadorNovo);
                                             utilizador = utilizadorNovo;
                                         } while (menu5 != 0);
@@ -694,7 +706,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
-                                                    acoes.add(new Acao("Cliente Listou os Automóveis por Marca:  " +marca));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou os Automóveis por Marca: " +marca);
                                                     break;
                                                 case 2:
                                                     System.out.println("Escolha o Modelo: ");
@@ -704,7 +716,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
-                                                    acoes.add(new Acao("Cliente Listou os Automóveis por Modelo:  " +modelo));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou os Automóveis por Modelo: " +modelo);
                                                     break;
                                                 case 3:
                                                     System.out.println("Escolha o Ano: ");
@@ -714,7 +726,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
-                                                    acoes.add(new Acao("Cliente Listou os Automóveis por Ano:  " +ano));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou os Automóveis por Ano: " +ano);
                                                     break;
                                                 case 4:
                                                     System.out.println("Escolha o Preço Máximo: ");
@@ -724,7 +736,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
-                                                    acoes.add(new Acao("Cliente Listou os Automóveis por Preço:  " +preco));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou os Automóveis por Preço: " +preco);
                                                     break;
                                                 case 5:
                                                     for (Automovel auto : automoveis) {
@@ -732,7 +744,7 @@ public class Main {
                                                             System.out.println(auto.toString());
                                                         }
                                                     }
-                                                    acoes.add(new Acao("Cliente Listou Todos os Automóveis Disponíveis "));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou Todos os Automóveis Disponíveis ");
                                                     break;
                                                 default:
                                                     System.out.println("Opcao Inválida!\n\n");
@@ -753,7 +765,7 @@ public class Main {
                                                 System.out.println(auto.toString());
                                             }
                                         }
-                                        acoes.add(new Acao("Cliente viu a informação do Automóvel com Matrícula:  " +matricula));
+                                        utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Viu A Informação do Automóvel com Matrícula: " +matricula);
                                         break;
                                     case 5:
                                         /* Reservar Automóvel */
@@ -778,7 +790,7 @@ public class Main {
                                                 System.out.println("Reserva efetuada com sucesso!!");
                                             }
                                         }
-                                        acoes.add(new Acao("Cliente Reservou Automóvel com Matrícula:  " +matricula));
+                                        utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Reservou o Automóvel com Matrícula: " +matricula);
                                         break;
                                     case 6:
                                         int menu7;
@@ -801,7 +813,7 @@ public class Main {
                                                     for (Vendas venda : vendas){
                                                         System.out.println(venda.vendasEfetuadas());
                                                     }
-                                                    acoes.add(new Acao("Cliente consultou o seu Histórico de Compras  "));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Consultou o Seu Histórico de Compras ");
                                                     break;
                                                 case 2:
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
@@ -809,13 +821,14 @@ public class Main {
                                                     for (Reserva reserva : reservas) {
                                                         System.out.println(reserva.reservasEfetuadas());
                                                     }
-                                                    acoes.add(new Acao("Cliente consultou o seu Histórico de Reservas  "));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Consultou o Seu Histórico de Reservas ");
                                                     break;
                                                 case 3:
                                                     System.out.println("\n\n*****      Histórico de Ações       *****");
-                                                    acoes.add(new Acao("Cliente consultou o seu Histórico de Ações  "));
+                                                    utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Consultou o Seu Histórico de Ações ");
+                                                    acoes = utilizador.getAcoes();
                                                     for (Acao acao: acoes){
-                                                        System.out.println(acao.getNomeAcao() + " - " + acao.getDataHora());
+                                                        System.out.println("NIF: " + acao.getNif() + " - " + acao.getNomeAcao() + " - " + acao.getDataHora());
                                                     }
                                                     break;
                                                 default:
