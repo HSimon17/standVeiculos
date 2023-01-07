@@ -58,6 +58,7 @@ public class Main {
         utilizadores.add( new Utilizador("Hugo", "Simoes", "hugo", "123", 12345, 926, "Barcelos", "cliente"));
         utilizadores.add( new Utilizador("Filipa", "Feerz", "ff", "ff", 231, 921, "Braga", "userManager"));
         utilizadores.add( new Utilizador("Marta", "Barbosa", "mm", "mm", 221, 932, "Barcelos", "cliente"));
+        utilizadores.add( new Utilizador("João", "Carlos", "jj", "jj", 223, 9214, "Viana", "cliente"));
         automoveis.add(new Automovel("TS-43-NT", "Ford", "Fiesta", "Preto", 2004, 357523, 2100));
         automoveis.add(new Automovel("HS-17-HS", "Audi", "R8", "Branco", 2022, 20, 30000));
         automoveis.add(new Automovel("75-ZT-71", "Citroen", "C3", "Vermelho", 2015, 75000, 14500));
@@ -932,7 +933,7 @@ public class Main {
                                                 existe = true; // se sim existe passa para true
                                             }
                                         }
-                                        if (existe = true) { // se já existir dá erro
+                                        if (existe) { // se já existir dá erro
                                             System.out.println("NIF já existente!\n");
                                         } else { // se existe for false adiciona o utilizador
                                             System.out.println("Utilizador Registado com Sucesso!\n");
