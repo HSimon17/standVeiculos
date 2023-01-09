@@ -589,7 +589,7 @@ public class Main {
                                         System.out.println("Opcao Inválida!\n\n");
                                 }
                             } while (menu2 != 0);
-                        } else if (utilizador.getTipoUser().equals("cliente")) {
+                        } else if (utilizador.getTipoUser().equals("cliente")) { // imprime para o ecrã o menu Cliente se o tipo de User for cliente
                             int menu4;
                             do {
                                 System.out.println(utilizador.ola());
@@ -607,14 +607,16 @@ public class Main {
                                 menu4 = ler.nextInt();
                                 switch (menu4) {
                                     case 0:
+                                        // caso o Cliente faça logout é invocado o método acoesRealizadas que adiciona uma acao ao cliente
                                         utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Fez Logout ");
                                         break;
                                     case 1:
-                                        System.out.println(utilizador.toString());
+                                        System.out.println(utilizador.toString()); // Imprime para o ecrã as informações do perfil logado
+                                        // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                         utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Visualizou o seu Perfil ");
                                         break;
                                     case 2:
-                                        System.out.println(utilizador.toString());
+                                        System.out.println(utilizador.toString()); //imprime as informações do cliente logado
 
                                         int menu5;
                                         do {
@@ -630,6 +632,7 @@ public class Main {
                                             System.out.println("\n*****************************************");
                                             System.out.print("Insira a Informação que deseja Editar: ");
                                             menu5 = ler.nextInt();
+                                            // possibilidade do cliente editar as suas informações optando pelo opção que escolher
                                             switch (menu5) {
                                                 case 0:
                                                     break;
@@ -638,6 +641,7 @@ public class Main {
                                                     System.out.println("Altere o Nome: ");
                                                     nome = ler.next();
                                                     utilizador.setNome(nome);
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou o seu Nome: " +nome);
                                                     break;
                                                 case 2:
@@ -645,6 +649,7 @@ public class Main {
                                                     System.out.println("Altere o Apelido: ");
                                                     apelido = ler.next();
                                                     utilizador.setApelido(apelido);
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou o seu Apelido: " +apelido);
                                                     break;
                                                 case 3:
@@ -652,6 +657,7 @@ public class Main {
                                                     System.out.println("Altere o Email: ");
                                                     email = ler.next();
                                                     utilizador.setEmail(email);
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou o seu Email: " +email);
                                                     break;
                                                 case 4:
@@ -659,6 +665,7 @@ public class Main {
                                                     System.out.println("Altere a Password: ");
                                                     password = ler.next();
                                                     utilizador.setPassword(password);
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou a sua Password: " +password);
                                                     break;
                                                 case 5:
@@ -666,6 +673,7 @@ public class Main {
                                                     System.out.println("Altere a Cidade: ");
                                                     cidade = ler.next();
                                                     utilizador.setCidade(cidade);
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou a sua Cidade: " +cidade);
                                                     break;
                                                 case 6:
@@ -673,6 +681,7 @@ public class Main {
                                                     System.out.println("Altere o Telemóvel: ");
                                                     telemovel = ler.nextInt();
                                                     utilizador.setTelemovel(telemovel);
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Editou o seu Telemóvel: " +telemovel);
                                                     break;
                                                 default:
@@ -704,9 +713,10 @@ public class Main {
                                                     marca = ler.next();
                                                     for(Automovel auto : automoveis){
                                                         if(auto.getMarca().equals(marca) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã todos os automóveis disponíveis da marca escolhida
                                                         }
                                                     }
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou os Automóveis por Marca: " +marca);
                                                     break;
                                                 case 2:
@@ -714,9 +724,10 @@ public class Main {
                                                     modelo = ler.next();
                                                     for(Automovel auto : automoveis) {
                                                         if (auto.getModelo().equals(modelo) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)) {
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã todos os automóveis disponíveis do modelo escolhido
                                                         }
                                                     }
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou os Automóveis por Modelo: " +modelo);
                                                     break;
                                                 case 3:
@@ -724,9 +735,10 @@ public class Main {
                                                     ano = Integer.parseInt(ler.next());
                                                     for(Automovel auto : automoveis){
                                                         if(auto.getAno() == ano && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã todos os automóveis disponíveis do ano escolhido
                                                         }
                                                     }
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou os Automóveis por Ano: " +ano);
                                                     break;
                                                 case 4:
@@ -734,17 +746,19 @@ public class Main {
                                                     preco = ler.nextFloat();
                                                     for(Automovel auto : automoveis){
                                                         if(auto.getPreco() <= preco && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã todos os automóveis disponíveis abaixo do preço escolhido
                                                         }
                                                     }
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou os Automóveis por Preço: " +preco);
                                                     break;
                                                 case 5:
                                                     for (Automovel auto : automoveis) {
                                                         if (auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã todos os automóveis disponíveis
                                                         }
                                                     }
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Listou Todos os Automóveis Disponíveis ");
                                                     break;
                                                 default:
@@ -753,8 +767,8 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 4:
-                                        /* Informação de um Automóvel */
-                                        for(Automovel auto : automoveis){
+                                        // Informação de um Automóvel
+                                        for(Automovel auto : automoveis){ // imprime para o ecrã as matrículas dos automóveis disponíveis
                                             if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
                                                 System.out.println(auto.matriculas());
                                             }
@@ -763,16 +777,17 @@ public class Main {
                                         matricula = ler.next();
                                         for (Automovel auto: automoveis){
                                             if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
-                                                System.out.println(auto.toString());
+                                                System.out.println(auto.toString()); //imprime para o ecrã a informação do automóvel escolhido pelo cliente
                                             }
                                         }
+                                        // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                         utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Viu A Informação do Automóvel com Matrícula: " +matricula);
                                         break;
                                     case 5:
-                                        /* Reservar Automóvel */
+                                        // Reservar Automóvel
                                         System.out.println("\n\n*****       Reservar Automóvel       *****");
 
-                                        for (Automovel auto : automoveis) {
+                                        for (Automovel auto : automoveis) { // imprime para o ecrã os automóveis disponíveis
                                             if (auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
                                                 System.out.println(auto.matriculas());
                                             }
@@ -785,12 +800,13 @@ public class Main {
                                             if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL)) {
                                                 System.out.println("Insira a data: ");
                                                 data = ler.next();
-                                                utilizador.reservarAutomovel(matricula, data);
-                                                /* Alterar estados do Automóvel */
+                                                utilizador.reservarAutomovel(matricula, data); // invoca o método reservarAutomóvel para criar uma reserva para o cliente logado
+                                                // Alterar estados do Automóvel
                                                 auto.setEstado(Automovel.Estado.RESERVADO);
                                                 System.out.println("Reserva efetuada com sucesso!!");
                                             }
                                         }
+                                        // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                         utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Reservou o Automóvel com Matrícula: " +matricula);
                                         break;
                                     case 6:
@@ -811,24 +827,27 @@ public class Main {
                                                 case 1:
                                                     System.out.println("\n\n*****      Histórico de Compras      *****");
                                                     vendas = utilizador.getVendas();
-                                                    for (Vendas venda : vendas){
+                                                    for (Vendas venda : vendas){ // imprime para o ecrã as compras feitas pelo cliente logado
                                                         System.out.println(venda.vendasEfetuadas());
                                                     }
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Consultou o Seu Histórico de Compras ");
                                                     break;
                                                 case 2:
                                                     System.out.println("\n\n*****      Histórico de Reservas       *****");
                                                     reservas = utilizador.getReservas();
-                                                    for (Reserva reserva : reservas) {
+                                                    for (Reserva reserva : reservas) { // imprime para o ecrã as reservas feitas pelo cliente logado
                                                         System.out.println(reserva.reservasEfetuadas());
                                                     }
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Consultou o Seu Histórico de Reservas ");
                                                     break;
                                                 case 3:
                                                     System.out.println("\n\n*****      Histórico de Ações       *****");
+                                                    // É invocado o método acoesRealizadas e adiciona uma acao ao Cliente
                                                     utilizador.acoesRealizadas(utilizador.getNif(), "Cliente Consultou o Seu Histórico de Ações ");
                                                     acoes = utilizador.getAcoes();
-                                                    for (Acao acao: acoes){
+                                                    for (Acao acao: acoes){ // imprime para o ecrã as ações realizadas por o cliente logado
                                                         System.out.println("NIF: " + acao.getNif() + " - " + acao.getNomeAcao() + " - " + acao.getDataHora());
                                                     }
                                                     break;
@@ -876,6 +895,7 @@ public class Main {
                                         System.out.println("\n*****************************************");
                                         System.out.print("Insira a Informação que deseja Editar: ");
                                         menu5 = ler.nextInt();
+                                        // possibilidade do UserManager editar o seu Perfil optando por editar uma das opções
                                         switch (menu5) {
                                             case 0:
                                                 break;
@@ -923,7 +943,7 @@ public class Main {
                                     } while (menu5 != 0);
                                     break;
                                     case 3:
-                                        /* Criar um Novo Utilizador */
+                                        // Criar um Novo Utilizador
                                         utilizadorCriado = adicionarUtilizador();
                                         if (utilizadorCriado != null) {
                                             existe = false;
@@ -941,18 +961,18 @@ public class Main {
                                         }
                                         break;
                                     case 4:
-                                        /* Editar Perfil de um Utilizador que não o que está Logado */
+                                        // Editar Perfil de um Utilizador que não o que está Logado
                                         for (Utilizador user : utilizadores) { // imprime para o ecrã os nifs existentes
                                                 System.out.println(user.nifs());
                                         }
                                         System.out.println("Escolha o Utilizador pelo seu nif: ");
                                         nif = Integer.parseInt(ler.next());
-                                        for (Utilizador use: utilizadores){ // se o nif for um que já existe imprime para o ecrã a informação desse utilizador
-                                            if(use.getNif() == nif){
-                                                System.out.println(use.toString());
+                                        for (Utilizador user: utilizadores){ // se o nif for um que já existe imprime para o ecrã a informação desse utilizador
+                                            if(user.getNif() == nif){
+                                                System.out.println(user.toString());
                                             }
                                         }
-                                        for (Utilizador user : utilizadores){
+                                        for (Utilizador user : utilizadores){ //imprime para o ecrã a informação do utilizador escolhido pelo UserManager
                                             if (user.getNif() == nif){
                                                 System.out.println(user.toString());
 
@@ -971,6 +991,7 @@ public class Main {
                                                     System.out.println("\n*********************************************");
                                                     System.out.print("Insira a Informação que deseja Editar: ");
                                                     menu3 = ler.nextInt();
+                                                    // possibilidade de o UserManager editar as informações de um cliente
                                                     switch (menu3) {
                                                         case 0:
                                                             break;
@@ -1027,17 +1048,18 @@ public class Main {
                                         }
                                         break;
                                     case 5:
+                                        // Listar Automóveis por Filtros
                                         int menu6;
                                         do {
-                                            System.out.println("\n\n*****     Listar Veículos      *****");
-                                            System.out.println("\n*************************************");
-                                            System.out.println("**** 1 - Listar por marca          ****");
-                                            System.out.println("**** 2 - Listar por modelo         ****");
-                                            System.out.println("**** 3 - Listar por ano            ****");
-                                            System.out.println("**** 4 - Listar por preço          ****");
-                                            System.out.println("**** 5 - Listar todos os Veículos  ****");
-                                            System.out.println("**** 0 - Sair                      ****");
-                                            System.out.println("\n*************************************");
+                                            System.out.println("\n\n*****      Listar Automóveis      *****");
+                                            System.out.println("\n****************************************");
+                                            System.out.println("**** 1 - Listar por marca            ****");
+                                            System.out.println("**** 2 - Listar por modelo           ****");
+                                            System.out.println("**** 3 - Listar por ano              ****");
+                                            System.out.println("**** 4 - Listar por preço            ****");
+                                            System.out.println("**** 5 - Listar todos os Automóveis  ****");
+                                            System.out.println("**** 0 - Sair                        ****");
+                                            System.out.println("\n****************************************");
                                             System.out.print("\nInsira a opção que deseja: ");
                                             menu6 = ler.nextInt();
                                             switch (menu6){
@@ -1047,7 +1069,7 @@ public class Main {
                                                     marca = ler.next();
                                                     for(Automovel auto : automoveis){
                                                         if(auto.getMarca().equals(marca)){
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã os automóveis com a marca selecionada
                                                         }
                                                     }
                                                     break;
@@ -1056,7 +1078,7 @@ public class Main {
                                                     modelo = ler.next();
                                                     for(Automovel auto : automoveis) {
                                                         if (auto.getModelo().equals(modelo)) {
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã os automóveis com o modelo selecionado
                                                         }
                                                     }
                                                     break;
@@ -1065,7 +1087,7 @@ public class Main {
                                                     ano = Integer.parseInt(ler.next());
                                                     for(Automovel auto : automoveis){
                                                         if(auto.getAno() == ano){
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã os automóveis com o ano selecionado
                                                         }
                                                     }
                                                     break;
@@ -1074,13 +1096,13 @@ public class Main {
                                                     preco = ler.nextFloat();
                                                     for(Automovel auto : automoveis){
                                                         if(auto.getPreco() <= preco){
-                                                            System.out.println(auto.toString());
+                                                            System.out.println(auto.toString()); //imprime para o ecrã os automóveis com o preço abaixo do selecionado
                                                         }
                                                     }
                                                     break;
                                                 case 5:
                                                     for (Automovel auto : automoveis) {
-                                                        System.out.println(auto.toString());
+                                                        System.out.println(auto.toString()); //imprime para o ecrã todos os automóveis
                                                     }
                                                     break;
                                                 default:
@@ -1089,7 +1111,7 @@ public class Main {
                                         } while(menu6 != 0);
                                         break;
                                     case 6:
-                                        /* Listar utilizadores com filtros */
+                                        // Listar utilizadores com filtros
                                     int menu9;
                                     do {
                                         System.out.println("\n\n*****     Listar Utilizadores          *****");
@@ -1108,7 +1130,7 @@ public class Main {
                                                 cidade = ler.next();
                                                 for (Utilizador user: utilizadores){
                                                     if(user.getCidade().equals(cidade)){
-                                                        System.out.println(user.toString());
+                                                        System.out.println(user.toString()); //imprime para o ecrã os utilizadores da cidade selecionada
                                                     }
                                                 }
                                                 break;
@@ -1118,9 +1140,9 @@ public class Main {
                                                 }
                                                 System.out.println("Escolha o Cliente pelo seu NIF: ");
                                                 nif = Integer.parseInt(ler.next());
-                                                for (Utilizador use: utilizadores){
-                                                    if(use.getNif() == nif){
-                                                        System.out.println(use.toString());
+                                                for (Utilizador user: utilizadores){
+                                                    if(user.getNif() == nif){
+                                                        System.out.println(user.toString()); //imprime para o ecrã o utilizadore com o NIF selecionado
                                                     }
                                                 }
                                                 break;
@@ -1133,13 +1155,13 @@ public class Main {
                                                 tipoUser = ler.next();
                                                 for (Utilizador user: utilizadores){
                                                     if(user.getTipoUser().equals(tipoUser)){
-                                                        System.out.println(user.toString());
+                                                        System.out.println(user.toString()); //imprime para o ecrã os utilizadores do tipo selecionado
                                                     }
                                                 }
                                                 break;
                                             case 4:
                                                 for (Utilizador user : utilizadores) {
-                                                    System.out.println(user.toString());
+                                                    System.out.println(user.toString()); //imprime para o ecrã todos os utilizadores
                                                 }
                                                 break;
                                             case 0:
