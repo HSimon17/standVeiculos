@@ -401,28 +401,28 @@ public class Main {
                                         // Vender Automóvel
                                         System.out.println("\n\n*****     Registar Compra      *****");
                                         for (Utilizador user : utilizadores) {
-                                            if(user.getTipoUser().equals("cliente")) {
+                                            if(user.getTipoUser().equals("cliente")) { //se o tipo de user for cliente imprime para ecrã uma lista dos nifs
                                                 System.out.println(user.nifs());
                                             }
                                         }
                                         System.out.println("Escolha o Cliente pelo seu nif: ");
-                                        nif = Integer.parseInt(ler.next());
+                                        nif = Integer.parseInt(ler.next()); // admin escreve um dos nifs
 
                                         for(Automovel auto : automoveis){
-                                            if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){
+                                            if(auto.getEstado().equals(Automovel.Estado.DISPONIVEL)){ // se o estado do automovrl for Disponivel imprime para ecrã uma lista das matriculas
                                                 System.out.println(auto.matriculas());
                                             }
                                         }
                                         System.out.println("Escolha o Veículo pela sua Matrícula: ");
-                                        matricula = ler.next();
+                                        matricula = ler.next(); // admin escreve uma matricula
 
                                         for (Automovel auto: automoveis){
                                             for (Utilizador user : utilizadores){
-                                                if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL) && user.getNif() == nif) {
+                                                if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.DISPONIVEL) && user.getNif() == nif) { // se a matricula existir, o carro estiver disponivel e o nif escolhido tambem existir
                                                     System.out.println("Insira a data: ");
-                                                    data = ler.next();
-                                                    user.venderAutomovel(nif, matricula, data);
-                                                    auto.setEstado(Automovel.Estado.VENDIDO);
+                                                    data = ler.next(); // a admin insere a data de compra
+                                                    user.venderAutomovel(nif, matricula, data); // adiciona a venda ao user escolhido
+                                                    auto.setEstado(Automovel.Estado.VENDIDO); // o estado do automovel passa para vendido
                                                     System.out.println("Compra efetuada com sucesso!!");
                                                 }
                                             }
@@ -435,7 +435,7 @@ public class Main {
                                         for (Utilizador user : utilizadores){
                                             reservas = user.getReservas();
                                             for (Reserva reserva : reservas) {
-                                                if (reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR))
+                                                if (reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)) //se o estado da reserva estiver por validar imprime para o ecrã lista das reservas
                                                     System.out.println(reserva.reservasEfetuadas());
                                             }
                                         }
@@ -447,7 +447,7 @@ public class Main {
                                             reservas = user.getReservas();
                                             for (Reserva reserva: reservas){
                                                 for (Automovel auto: automoveis){
-                                                    if (reserva.getMatricula().equals(matricula) && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && auto.getMatricula().equals(reserva.getMatricula())){
+                                                    if (reserva.getMatricula().equals(matricula) && reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR) && auto.getMatricula().equals(reserva.getMatricula())){ // se a matricula existir, o estado da reserva estiver por validar e a matricula estiver numa reserva
                                                             /* Alterar estados do Automóvel e da Reserva */
                                                             auto.setEstado(Automovel.Estado.VENDIDO);
                                                             reserva.setEstado(Reserva.Estado.CONCLUIDA);
@@ -461,8 +461,8 @@ public class Main {
                                         // Cancelar Reserva
                                         System.out.println("\n\n*****     Cancelar Reservas      *****");
                                         for (Automovel auto : automoveis) {
-                                            if (auto.getEstado().equals(Automovel.Estado.RESERVADO)){
-                                                System.out.println(auto.matriculas());
+                                            if (auto.getEstado().equals(Automovel.Estado.RESERVADO)){  // se um automovel estiver no estado reservado
+                                                System.out.println(auto.matriculas());// imprime para o ecra uma lista das matriculas
                                             }
                                         }
                                         System.out.println("Insira a matrícula: ");
@@ -472,7 +472,7 @@ public class Main {
                                             reservas = user.getReservas();
                                             for (Reserva reserva : reservas){
                                                 for (Automovel auto: automoveis){
-                                                    if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.RESERVADO)) {
+                                                    if(auto.getMatricula().equals(matricula) && auto.getEstado().equals(Automovel.Estado.RESERVADO)) { //  se a matricula existir e o estado da reserva desse automovel estiver em reservado
                                                         /* Alterar estados do Automóvel e da Reserva */
                                                         auto.setEstado(Automovel.Estado.DISPONIVEL);
                                                         reserva.setEstado(Reserva.Estado.CANCELADA);
@@ -488,7 +488,7 @@ public class Main {
                                         for(Utilizador user: utilizadores){
                                             reservas = user.getReservas();
                                             for(Reserva reserva: reservas){
-                                                if(reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)){
+                                                if(reserva.getEstado().equals(Reserva.Estado.POR_VALIDAR)){ // lista todas as informações de uma reserva que esteja por validar
                                                     System.out.println("\nMatricula: " + reserva.getMatricula());
                                                     System.out.println("\nNif cliente: " + reserva.getNif());
                                                     System.out.println("\nData reserva: " + reserva.getData());
@@ -500,14 +500,14 @@ public class Main {
                                     case 9:
                                         // Pesquisar Clientes
                                         for (Utilizador user : utilizadores) {
-                                            if(user.getTipoUser().equals("cliente")) {
+                                            if(user.getTipoUser().equals("cliente")) { // se o user for do tipo cliente imprime para o ecrã uma lista dos nifs
                                                 System.out.println(user.nifs());
                                             }
                                         }
                                         System.out.println("Escolha o Cliente pelo seu nif: ");
-                                        nif = Integer.parseInt(ler.next());
+                                        nif = Integer.parseInt(ler.next()); // o admin escreve um nif
                                         for (Utilizador use: utilizadores){
-                                            if(use.getNif() == nif){
+                                            if(use.getNif() == nif){ // se esse nif existir imorime para o ecrã as suas informaçoes
                                                 System.out.println(use.toString());
                                             }
                                         }
@@ -517,8 +517,8 @@ public class Main {
                                         System.out.println(utilizador.toString());
                                         break;
                                     case 11:
-                                        System.out.println(utilizador.toString());
-
+                                        System.out.println(utilizador.toString()); //imprime as informações do admin logado
+                                        // imrpime o menu para o user escolher o quer editar, dependeo da variavel escolhida, essa é alterada e atualizada
                                         int menu5;
                                         do {
                                             System.out.println("\n\n*****       Editar Perfil          *****");
@@ -583,7 +583,7 @@ public class Main {
                                         System.out.println("*****        Histórico de Ações          *****");
                                         for (Utilizador user : utilizadores){
                                             acoes = user.getAcoes();
-                                            for (Acao acao : acoes){
+                                            for (Acao acao : acoes){ // imprime para o ecrã as ações guardadas no array acoes (todas as acoes independentemente do user)
                                                 System.out.println("NIF: " + acao.getNif() + " - " + acao.getNomeAcao() + " - " + acao.getDataHora());
                                             }
                                         }
